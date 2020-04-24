@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.StripeTerminal.iOS", "Xamarin.StripeTerminal.iOS\Xamarin.StripeTerminal.iOS.csproj", "{1C68F92A-5B0B-45D1-A651-1D145661D64B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.Stripe.Terminal.Android", "Xamarin.Stripe.Terminal.Android\Xamarin.Stripe.Terminal.Android.csproj", "{6FD5D83D-CC75-413F-8009-E1AD1EB5CF0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +15,9 @@ Global
 		{1C68F92A-5B0B-45D1-A651-1D145661D64B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C68F92A-5B0B-45D1-A651-1D145661D64B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C68F92A-5B0B-45D1-A651-1D145661D64B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FD5D83D-CC75-413F-8009-E1AD1EB5CF0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FD5D83D-CC75-413F-8009-E1AD1EB5CF0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FD5D83D-CC75-413F-8009-E1AD1EB5CF0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FD5D83D-CC75-413F-8009-E1AD1EB5CF0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

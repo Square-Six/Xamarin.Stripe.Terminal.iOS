@@ -1,0 +1,41 @@
+﻿<metadata>
+
+
+    <!--
+    **********************************************************************************************************
+        Remove J-Unit
+    **********************************************************************************************************
+    -->
+
+    <remove-node path="/api/package[starts-with(@name, 'com.google')]" />
+    <remove-node path="/api/package[starts-with(@name, 'kotlin')]" />
+    <remove-node path="/api/package[starts-with(@name, 'org.jetbrains')]" /> 
+    <remove-node path="/api/package[starts-with(@name, 'dagger')]" />
+
+
+    <remove-node path="/api/package[starts-with(@name, 'org.junit.runners')]" />
+    <remove-node path="/api/package[starts-with(@name, 'org.junit.runner')]" />
+    <remove-node path="/api/package[starts-with(@name, 'com.stripe.kotlin')]" />
+    <remove-node path="/api/package[starts-with(@name, 'com.stripe.bbpos')]" />
+    <remove-node path="/api/package[starts-with(@name, 'com.stripe.okio')]" />
+    <remove-node path="/api/package[starts-with(@name, 'com.stripe.okhttp3')]" />
+    <remove-node path="/api/package[starts-with(@name, 'com.stripe.stripeterminal.dagger')]" />
+    <remove-node path="/api/package[starts-with(@name, 'org.hamcrest')]" />
+
+    <remove-node path="/api/package[starts-with(@name, 'com.stripe.stripeterminal.bbpos')]" />
+    <remove-node path="/api/package[starts-with(@name, 'com.stripe.stripeterminal.api')]" />
+    <remove-node path="/api/package[starts-with(@name, 'com.stripe.stripeterminal.adapter')]" />
+    <remove-node path="/api/package[starts-with(@name, 'com.stripe.stripeterminal.log')]" />
+    <remove-node path="/api/package[starts-with(@name, 'com.stripe.stripeterminal.rpc')]" />
+
+    <remove-node path="/api/package[@name='com.stripe.stripeterminal']/class[@name='ConnectionTokenManager_Factory']" />
+    <remove-node path="/api/package[@name='com.stripe.stripeterminal']/class[@name='HttpModule_ProvideOkHttpClientFactory']" />
+    <remove-node path="/api/package[@name='com.stripe.stripeterminal']/class[@name='LocationHandler_Factory']" />
+    <remove-node path="/api/package[@name='com.stripe.stripeterminal']/class[@name='TerminalSession_Factory']" />
+    <remove-node path="/api/package[@name='com.stripe.stripeterminal']/class[@name='TerminalStatusManager_Factory']" />
+    <remove-node path="/api/package[@name='com.stripe.stripeterminal']/class[@name='Terminal_Factory']" />
+
+    <attr path="/api/package[@name='com.stripe.stripeterminal']/class[@name='Terminal']" name="managedName">StripeTerminal</attr> -->
+
+
+</metadata>
