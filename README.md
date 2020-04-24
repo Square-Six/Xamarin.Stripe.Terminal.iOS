@@ -42,8 +42,8 @@ For any requests, bug or comments, please [open an issue][issues] or [submit a
 pull request][pulls].
 
 [dotnet-core-cli-tools]: https://docs.microsoft.com/en-us/dotnet/core/tools/
-[issues]: https://github.com/Square-Six/Xamarin.Stripe.Terminal/issues/new
+[issues]: https://github.com/Square-Six/Xamarin.Stripe.Terminal.iOS/issues/new
 [nuget-cli]: https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference
 [package-manager-console]: https://docs.microsoft.com/en-us/nuget/tools/package-manager-console
-[pulls]: https://github.com/Square-Six/Xamarin.Stripe.Terminal/pulls
+[pulls]: https://github.com/Square-Six/Xamarin.Stripe.Terminal.iOS/pulls
 [stripe]: https://stripe.com
