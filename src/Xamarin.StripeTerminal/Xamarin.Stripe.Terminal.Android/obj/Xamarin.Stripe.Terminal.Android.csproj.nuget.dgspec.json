@@ -1,0 +1,85 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/Xamarin.Stripe.Terminal.Android/Xamarin.Stripe.Terminal.Android.csproj": {}
+  },
+  "projects": {
+    "/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/Xamarin.Stripe.Terminal.Android/Xamarin.Stripe.Terminal.Android.csproj": {
+      "version": "3.1.0",
+      "restore": {
+        "projectUniqueName": "/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/Xamarin.Stripe.Terminal.Android/Xamarin.Stripe.Terminal.Android.csproj",
+        "projectName": "Xamarin.StripeTerminal.Android",
+        "projectPath": "/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/Xamarin.Stripe.Terminal.Android/Xamarin.Stripe.Terminal.Android.csproj",
+        "packagesPath": "/Users/jamie/.nuget/packages/",
+        "outputPath": "/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/Xamarin.Stripe.Terminal.Android/obj/",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "/Users/jamie/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "monoandroid90"
+        ],
+        "sources": {
+          "/Users/jamie/Desktop/NugetTests": {},
+          "http://nugets.vapolia.fr/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "monoandroid90": {
+            "projectReferences": {
+              "/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/AndroidX.Lifecycle.LiveData.Core.KTX/AndroidX.Lifecycle.LiveData.Core.KTX.csproj": {
+                "projectPath": "/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/AndroidX.Lifecycle.LiveData.Core.KTX/AndroidX.Lifecycle.LiveData.Core.KTX.csproj"
+              },
+              "/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/AndroidX.Lifecycle.LiveData.KTX/AndroidX.Lifecycle.LiveData.KTX.csproj": {
+                "projectPath": "/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/AndroidX.Lifecycle.LiveData.KTX/AndroidX.Lifecycle.LiveData.KTX.csproj"
+              },
+              "/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/AndroidX.Lifecycle.LiveData/AndroidX.Lifecycle.LiveData.csproj": {
+                "projectPath": "/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/AndroidX.Lifecycle.LiveData/AndroidX.Lifecycle.LiveData.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "monoandroid90": {
+          "dependencies": {
+            "GoogleGson": {
+              "target": "Package",
+              "version": "[2.8.5, )"
+            },
+            "Naxam.Jakewharton.Timber": {
+              "target": "Package",
+              "version": "[4.7.1, )"
+            },
+            "NuGet.Build.Packaging": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.2.5-dev.8, )"
+            },
+            "Xamarin.Android.Arch.Persistence.Room.Runtime": {
+              "target": "Package",
+              "version": "[1.1.1.3, )"
+            },
+            "Xamarin.AndroidX.Lifecycle.Extensions": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

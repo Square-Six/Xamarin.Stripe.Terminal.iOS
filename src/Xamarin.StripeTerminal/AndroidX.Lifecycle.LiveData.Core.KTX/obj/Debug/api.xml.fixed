@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<api>
+  <package name="androidx.lifecycle" jni-name="androidx/lifecycle">
+    <class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" jni-extends="Ljava/lang/Object;" final="true" name="LiveDataKt" static="false" visibility="public" jni-signature="Landroidx/lifecycle/LiveDataKt;"></class>
+  </package>
+</api>

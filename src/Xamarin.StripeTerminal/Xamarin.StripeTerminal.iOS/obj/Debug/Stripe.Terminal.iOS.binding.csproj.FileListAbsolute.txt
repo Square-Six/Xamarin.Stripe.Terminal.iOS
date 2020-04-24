@@ -1,0 +1,5 @@
+/Users/jamie/Projects/SquareSix/stripe-terminal-xamarin-bindings/Stripe.Terminal.iOS.binding/bin/Debug/NativeLibrary.dll
+/Users/jamie/Projects/SquareSix/stripe-terminal-xamarin-bindings/Stripe.Terminal.iOS.binding/bin/Debug/NativeLibrary.pdb
+/Users/jamie/Projects/SquareSix/stripe-terminal-xamarin-bindings/Stripe.Terminal.iOS.binding/obj/Debug/Stripe.Terminal.iOS.binding.csprojAssemblyReference.cache
+/Users/jamie/Projects/SquareSix/stripe-terminal-xamarin-bindings/Stripe.Terminal.iOS.binding/obj/Debug/NativeLibrary.dll
+/Users/jamie/Projects/SquareSix/stripe-terminal-xamarin-bindings/Stripe.Terminal.iOS.binding/obj/Debug/NativeLibrary.pdb

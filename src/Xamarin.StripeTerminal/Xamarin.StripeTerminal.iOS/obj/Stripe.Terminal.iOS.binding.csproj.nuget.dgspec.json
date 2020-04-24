@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/jamie/Projects/SquareSix/stripe-terminal-xamarin-bindings/Stripe.Terminal.iOS.binding/Stripe.Terminal.iOS.binding.csproj": {}
+  },
+  "projects": {
+    "/Users/jamie/Projects/SquareSix/stripe-terminal-xamarin-bindings/Stripe.Terminal.iOS.binding/Stripe.Terminal.iOS.binding.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/jamie/Projects/SquareSix/stripe-terminal-xamarin-bindings/Stripe.Terminal.iOS.binding/Stripe.Terminal.iOS.binding.csproj",
+        "projectName": "NativeLibrary",
+        "projectPath": "/Users/jamie/Projects/SquareSix/stripe-terminal-xamarin-bindings/Stripe.Terminal.iOS.binding/Stripe.Terminal.iOS.binding.csproj",
+        "packagesPath": "/Users/jamie/.nuget/packages/",
+        "outputPath": "/Users/jamie/Projects/SquareSix/stripe-terminal-xamarin-bindings/Stripe.Terminal.iOS.binding/obj/",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "/Users/jamie/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "xamarinios10"
+        ],
+        "sources": {
+          "/Users/jamie/Projects/SquareSix/stripe-terminal-xamarin-bindings/Stripe.Terminal.Android.binding/bin/Debug": {},
+          "http://nugets.vapolia.fr/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "xamarinios10": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "xamarinios10": {
+          "dependencies": {
+            "NuGet.Build.Packaging": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.2.5-dev.8, )"
+            }
+          }
+        }
+      }
+    }
+  }
+}

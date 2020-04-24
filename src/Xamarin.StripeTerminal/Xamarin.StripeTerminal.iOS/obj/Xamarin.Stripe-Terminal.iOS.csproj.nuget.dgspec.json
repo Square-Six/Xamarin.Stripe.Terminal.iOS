@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/jamie/Projects/SquareSix/Xamarin.Stripe-Terminal/src/Xamarin.Stripe-Terminal.iOS/Xamarin.Stripe-Terminal.iOS.csproj": {}
+  },
+  "projects": {
+    "/Users/jamie/Projects/SquareSix/Xamarin.Stripe-Terminal/src/Xamarin.Stripe-Terminal.iOS/Xamarin.Stripe-Terminal.iOS.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/jamie/Projects/SquareSix/Xamarin.Stripe-Terminal/src/Xamarin.Stripe-Terminal.iOS/Xamarin.Stripe-Terminal.iOS.csproj",
+        "projectName": "Xamarin.Stripe-Terminal.iOS",
+        "projectPath": "/Users/jamie/Projects/SquareSix/Xamarin.Stripe-Terminal/src/Xamarin.Stripe-Terminal.iOS/Xamarin.Stripe-Terminal.iOS.csproj",
+        "packagesPath": "/Users/jamie/.nuget/packages/",
+        "outputPath": "/Users/jamie/Projects/SquareSix/Xamarin.Stripe-Terminal/src/Xamarin.Stripe-Terminal.iOS/obj/",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "/Users/jamie/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "xamarinios10"
+        ],
+        "sources": {
+          "/Users/jamie/Projects/SquareSix/Xamarin.Stripe-Terminal/src/Xamarin.Stripe-Terminal.Android/bin/Debug": {},
+          "/Users/jamie/Projects/SquareSix/Xamarin.Stripe-Terminal/src/Xamarin.Stripe-Terminal.iOS/bin/Debug": {},
+          "/Users/jamie/Projects/SquareSix/Xamarin.Stripe-Terminal/src/Xamarin.StripeTerminal.Forms.iOS/bin/Debug": {},
+          "/Users/jamie/Projects/SquareSix/Xamarin.Stripe-Terminal/src/Xamarin.StripeTerminal.Forms/bin/Debug": {},
+          "http://nugets.vapolia.fr/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "xamarinios10": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "xamarinios10": {
+          "dependencies": {
+            "NuGet.Build.Packaging": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.2.5-dev.8, )"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1990 @@
+<api
+  api-source="class-parse">
+  <package
+    name="androidx.lifecycle"
+    jni-name="androidx/lifecycle">
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/BlockRunner;"
+      enclosing-method-name="cancel"
+      enclosing-method-signature="()V"
+      jni-extends="Lkotlin/coroutines/jvm/internal/SuspendLambda;"
+      extends="kotlin.coroutines.jvm.internal.SuspendLambda"
+      extends-generic-aware="kotlin.coroutines.jvm.internal.SuspendLambda"
+      final="true"
+      name="BlockRunner.cancel.1"
+      jni-signature="Landroidx/lifecycle/BlockRunner$cancel$1;"
+      source-file-name="CoroutineLiveData.kt"
+      static="true"
+      visibility="">
+      <implements
+        name="kotlin.jvm.functions.Function2"
+        name-generic-aware="kotlin.jvm.functions.Function2&lt;kotlinx.coroutines.CoroutineScope, kotlin.coroutines.Continuation&lt;? super kotlin.Unit&gt;, java.lang.Object&gt;"
+        jni-type="Lkotlin/jvm/functions/Function2&lt;Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation&lt;-Lkotlin/Unit;&gt;;Ljava/lang/Object;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="create"
+        native="false"
+        return="kotlin.coroutines.Continuation&lt;kotlin.Unit&gt;"
+        jni-return="Lkotlin/coroutines/Continuation&lt;Lkotlin/Unit;&gt;;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;">
+        <parameter
+          name="value"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="completion"
+          type="kotlin.coroutines.Continuation&lt;?&gt;"
+          jni-type="Lkotlin/coroutines/Continuation&lt;*&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invoke"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="p0"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="p1"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invokeSuspend"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="$result"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/BlockRunner;"
+      enclosing-method-name="maybeRun"
+      enclosing-method-signature="()V"
+      jni-extends="Lkotlin/coroutines/jvm/internal/SuspendLambda;"
+      extends="kotlin.coroutines.jvm.internal.SuspendLambda"
+      extends-generic-aware="kotlin.coroutines.jvm.internal.SuspendLambda"
+      final="true"
+      name="BlockRunner.maybeRun.1"
+      jni-signature="Landroidx/lifecycle/BlockRunner$maybeRun$1;"
+      source-file-name="CoroutineLiveData.kt"
+      static="true"
+      visibility="">
+      <implements
+        name="kotlin.jvm.functions.Function2"
+        name-generic-aware="kotlin.jvm.functions.Function2&lt;kotlinx.coroutines.CoroutineScope, kotlin.coroutines.Continuation&lt;? super kotlin.Unit&gt;, java.lang.Object&gt;"
+        jni-type="Lkotlin/jvm/functions/Function2&lt;Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation&lt;-Lkotlin/Unit;&gt;;Ljava/lang/Object;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="create"
+        native="false"
+        return="kotlin.coroutines.Continuation&lt;kotlin.Unit&gt;"
+        jni-return="Lkotlin/coroutines/Continuation&lt;Lkotlin/Unit;&gt;;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;">
+        <parameter
+          name="value"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="completion"
+          type="kotlin.coroutines.Continuation&lt;?&gt;"
+          jni-type="Lkotlin/coroutines/Continuation&lt;*&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invoke"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="p0"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="p1"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invokeSuspend"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="$result"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/CoroutineLiveData;"
+      enclosing-method-name="&lt;init&gt;"
+      enclosing-method-signature="(Lkotlin/coroutines/CoroutineContext;JLkotlin/jvm/functions/Function2;)V"
+      jni-extends="Lkotlin/jvm/internal/Lambda;"
+      extends="kotlin.jvm.internal.Lambda"
+      extends-generic-aware="kotlin.jvm.internal.Lambda"
+      final="true"
+      name="CoroutineLiveData.1"
+      jni-signature="Landroidx/lifecycle/CoroutineLiveData$1;"
+      source-file-name="CoroutineLiveData.kt"
+      static="true"
+      visibility="">
+      <implements
+        name="kotlin.jvm.functions.Function0"
+        name-generic-aware="kotlin.jvm.functions.Function0&lt;kotlin.Unit&gt;"
+        jni-type="Lkotlin/jvm/functions/Function0&lt;Lkotlin/Unit;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="invoke"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="true"
+        synthetic="true"
+        jni-signature="()Ljava/lang/Object;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invoke"
+        native="false"
+        return="void"
+        jni-return="V"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="()V" />
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/CoroutineLiveData;"
+      enclosing-method-name="clearSource$lifecycle_livedata_ktx_release"
+      enclosing-method-signature="(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"
+      jni-extends="Lkotlin/coroutines/jvm/internal/ContinuationImpl;"
+      extends="kotlin.coroutines.jvm.internal.ContinuationImpl"
+      extends-generic-aware="kotlin.coroutines.jvm.internal.ContinuationImpl"
+      final="true"
+      name="CoroutineLiveData.clearSource.1"
+      jni-signature="Landroidx/lifecycle/CoroutineLiveData$clearSource$1;"
+      source-file-name="CoroutineLiveData.kt"
+      static="true"
+      visibility="">
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invokeSuspend"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="$result"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/CoroutineLiveData;"
+      enclosing-method-name="emitSource$lifecycle_livedata_ktx_release"
+      enclosing-method-signature="(Landroidx/lifecycle/LiveData;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"
+      jni-extends="Lkotlin/coroutines/jvm/internal/ContinuationImpl;"
+      extends="kotlin.coroutines.jvm.internal.ContinuationImpl"
+      extends-generic-aware="kotlin.coroutines.jvm.internal.ContinuationImpl"
+      final="true"
+      name="CoroutineLiveData.emitSource.1"
+      jni-signature="Landroidx/lifecycle/CoroutineLiveData$emitSource$1;"
+      source-file-name="CoroutineLiveData.kt"
+      static="true"
+      visibility="">
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invokeSuspend"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="$result"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="true"
+      name="CoroutineLiveDataKt"
+      jni-signature="Landroidx/lifecycle/CoroutineLiveDataKt;"
+      source-file-name="CoroutineLiveData.kt"
+      static="false"
+      visibility="public">
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="addDisposableSource"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Landroidx/lifecycle/MediatorLiveData;Landroidx/lifecycle/LiveData;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;">
+        <typeParameters>
+          <typeParameter
+            name="T"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+        </typeParameters>
+        <parameter
+          name="obj"
+          type="androidx.lifecycle.MediatorLiveData&lt;T&gt;"
+          jni-type="Landroidx/lifecycle/MediatorLiveData&lt;TT;&gt;;" />
+        <parameter
+          name="source"
+          type="androidx.lifecycle.LiveData&lt;T&gt;"
+          jni-type="Landroidx/lifecycle/LiveData&lt;TT;&gt;;" />
+        <parameter
+          name="$completion"
+          type="kotlin.coroutines.Continuation&lt;? super androidx.lifecycle.EmittedSource&gt;"
+          jni-type="Lkotlin/coroutines/Continuation&lt;-Landroidx/lifecycle/EmittedSource;&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="liveData$default"
+        native="false"
+        return="androidx.lifecycle.LiveData"
+        jni-return="Landroidx/lifecycle/LiveData;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="true"
+        jni-signature="(Lkotlin/coroutines/CoroutineContext;JLkotlin/jvm/functions/Function2;ILjava/lang/Object;)Landroidx/lifecycle/LiveData;">
+        <parameter
+          name="p0"
+          type="kotlin.coroutines.CoroutineContext"
+          jni-type="Lkotlin/coroutines/CoroutineContext;" />
+        <parameter
+          name="p1"
+          type="long"
+          jni-type="J" />
+        <parameter
+          name="p2"
+          type="kotlin.jvm.functions.Function2"
+          jni-type="Lkotlin/jvm/functions/Function2;" />
+        <parameter
+          name="p3"
+          type="int"
+          jni-type="I" />
+        <parameter
+          name="p4"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="liveData$default"
+        native="false"
+        return="androidx.lifecycle.LiveData"
+        jni-return="Landroidx/lifecycle/LiveData;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="true"
+        jni-signature="(Lkotlin/coroutines/CoroutineContext;Ljava/time/Duration;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Landroidx/lifecycle/LiveData;">
+        <parameter
+          name="p0"
+          type="kotlin.coroutines.CoroutineContext"
+          jni-type="Lkotlin/coroutines/CoroutineContext;" />
+        <parameter
+          name="p1"
+          type="java.time.Duration"
+          jni-type="Ljava/time/Duration;" />
+        <parameter
+          name="p2"
+          type="kotlin.jvm.functions.Function2"
+          jni-type="Lkotlin/jvm/functions/Function2;" />
+        <parameter
+          name="p3"
+          type="int"
+          jni-type="I" />
+        <parameter
+          name="p4"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="liveData"
+        native="false"
+        return="androidx.lifecycle.LiveData&lt;T&gt;"
+        jni-return="Landroidx/lifecycle/LiveData&lt;TT;&gt;;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Lkotlin/coroutines/CoroutineContext;JLkotlin/jvm/functions/Function2;)Landroidx/lifecycle/LiveData;">
+        <typeParameters>
+          <typeParameter
+            name="T"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+        </typeParameters>
+        <parameter
+          name="context"
+          type="kotlin.coroutines.CoroutineContext"
+          jni-type="Lkotlin/coroutines/CoroutineContext;" />
+        <parameter
+          name="timeoutInMs"
+          type="long"
+          jni-type="J" />
+        <parameter
+          name="block"
+          type="kotlin.jvm.functions.Function2&lt;? super androidx.lifecycle.LiveDataScope&lt;T&gt;, ? super kotlin.coroutines.Continuation&lt;? super kotlin.Unit&gt;, ? extends java.lang.Object&gt;"
+          jni-type="Lkotlin/jvm/functions/Function2&lt;-Landroidx/lifecycle/LiveDataScope&lt;TT;&gt;;-Lkotlin/coroutines/Continuation&lt;-Lkotlin/Unit;&gt;;+Ljava/lang/Object;&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="liveData"
+        native="false"
+        return="androidx.lifecycle.LiveData&lt;T&gt;"
+        jni-return="Landroidx/lifecycle/LiveData&lt;TT;&gt;;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Lkotlin/coroutines/CoroutineContext;Ljava/time/Duration;Lkotlin/jvm/functions/Function2;)Landroidx/lifecycle/LiveData;">
+        <typeParameters>
+          <typeParameter
+            name="T"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+        </typeParameters>
+        <parameter
+          name="context"
+          type="kotlin.coroutines.CoroutineContext"
+          jni-type="Lkotlin/coroutines/CoroutineContext;" />
+        <parameter
+          name="timeout"
+          type="java.time.Duration"
+          jni-type="Ljava/time/Duration;" />
+        <parameter
+          name="block"
+          type="kotlin.jvm.functions.Function2&lt;? super androidx.lifecycle.LiveDataScope&lt;T&gt;, ? super kotlin.coroutines.Continuation&lt;? super kotlin.Unit&gt;, ? extends java.lang.Object&gt;"
+          jni-type="Lkotlin/jvm/functions/Function2&lt;-Landroidx/lifecycle/LiveDataScope&lt;TT;&gt;;-Lkotlin/coroutines/Continuation&lt;-Lkotlin/Unit;&gt;;+Ljava/lang/Object;&gt;;" />
+      </method>
+      <field
+        deprecated="not deprecated"
+        final="true"
+        name="DEFAULT_TIMEOUT"
+        static="true"
+        synthetic="false"
+        transient="false"
+        type="long"
+        type-generic-aware="long"
+        jni-signature="J"
+        value="5000"
+        visibility="public"
+        volatile="false" />
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/CoroutineLiveDataKt;"
+      enclosing-method-name="addDisposableSource"
+      enclosing-method-signature="(Landroidx/lifecycle/MediatorLiveData;Landroidx/lifecycle/LiveData;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"
+      jni-extends="Lkotlin/coroutines/jvm/internal/SuspendLambda;"
+      extends="kotlin.coroutines.jvm.internal.SuspendLambda"
+      extends-generic-aware="kotlin.coroutines.jvm.internal.SuspendLambda"
+      final="true"
+      name="CoroutineLiveDataKt.addDisposableSource.2"
+      jni-signature="Landroidx/lifecycle/CoroutineLiveDataKt$addDisposableSource$2;"
+      source-file-name="CoroutineLiveData.kt"
+      static="true"
+      visibility="">
+      <implements
+        name="kotlin.jvm.functions.Function2"
+        name-generic-aware="kotlin.jvm.functions.Function2&lt;kotlinx.coroutines.CoroutineScope, kotlin.coroutines.Continuation&lt;? super androidx.lifecycle.EmittedSource&gt;, java.lang.Object&gt;"
+        jni-type="Lkotlin/jvm/functions/Function2&lt;Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation&lt;-Landroidx/lifecycle/EmittedSource;&gt;;Ljava/lang/Object;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="create"
+        native="false"
+        return="kotlin.coroutines.Continuation&lt;kotlin.Unit&gt;"
+        jni-return="Lkotlin/coroutines/Continuation&lt;Lkotlin/Unit;&gt;;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;">
+        <parameter
+          name="value"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="completion"
+          type="kotlin.coroutines.Continuation&lt;?&gt;"
+          jni-type="Lkotlin/coroutines/Continuation&lt;*&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invoke"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="p0"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="p1"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invokeSuspend"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="$result"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/CoroutineLiveDataKt$addDisposableSource$2;"
+      enclosing-method-name="invokeSuspend"
+      enclosing-method-signature="(Ljava/lang/Object;)Ljava/lang/Object;"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="true"
+      name="CoroutineLiveDataKt.addDisposableSource.2.1"
+      jni-signature="Landroidx/lifecycle/CoroutineLiveDataKt$addDisposableSource$2$1;"
+      source-file-name="CoroutineLiveData.kt"
+      static="true"
+      visibility="">
+      <typeParameters>
+        <typeParameter
+          name="T"
+          jni-classBound="Ljava/lang/Object;"
+          classBound="java.lang.Object"
+          interfaceBounds=""
+          jni-interfaceBounds="" />
+      </typeParameters>
+      <implements
+        name="androidx.lifecycle.Observer"
+        name-generic-aware="androidx.lifecycle.Observer&lt;S&gt;"
+        jni-type="Landroidx/lifecycle/Observer&lt;TS;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="onChanged"
+        native="false"
+        return="void"
+        jni-return="V"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)V">
+        <parameter
+          name="it"
+          type="T"
+          jni-type="TT;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/EmittedSource;"
+      enclosing-method-name="dispose"
+      enclosing-method-signature="()V"
+      jni-extends="Lkotlin/coroutines/jvm/internal/SuspendLambda;"
+      extends="kotlin.coroutines.jvm.internal.SuspendLambda"
+      extends-generic-aware="kotlin.coroutines.jvm.internal.SuspendLambda"
+      final="true"
+      name="EmittedSource.dispose.1"
+      jni-signature="Landroidx/lifecycle/EmittedSource$dispose$1;"
+      source-file-name="CoroutineLiveData.kt"
+      static="true"
+      visibility="">
+      <implements
+        name="kotlin.jvm.functions.Function2"
+        name-generic-aware="kotlin.jvm.functions.Function2&lt;kotlinx.coroutines.CoroutineScope, kotlin.coroutines.Continuation&lt;? super kotlin.Unit&gt;, java.lang.Object&gt;"
+        jni-type="Lkotlin/jvm/functions/Function2&lt;Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation&lt;-Lkotlin/Unit;&gt;;Ljava/lang/Object;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="create"
+        native="false"
+        return="kotlin.coroutines.Continuation&lt;kotlin.Unit&gt;"
+        jni-return="Lkotlin/coroutines/Continuation&lt;Lkotlin/Unit;&gt;;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;">
+        <parameter
+          name="value"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="completion"
+          type="kotlin.coroutines.Continuation&lt;?&gt;"
+          jni-type="Lkotlin/coroutines/Continuation&lt;*&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invoke"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="p0"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="p1"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invokeSuspend"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="$result"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/EmittedSource;"
+      enclosing-method-name="disposeNow"
+      enclosing-method-signature="(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"
+      jni-extends="Lkotlin/coroutines/jvm/internal/SuspendLambda;"
+      extends="kotlin.coroutines.jvm.internal.SuspendLambda"
+      extends-generic-aware="kotlin.coroutines.jvm.internal.SuspendLambda"
+      final="true"
+      name="EmittedSource.disposeNow.2"
+      jni-signature="Landroidx/lifecycle/EmittedSource$disposeNow$2;"
+      source-file-name="CoroutineLiveData.kt"
+      static="true"
+      visibility="">
+      <implements
+        name="kotlin.jvm.functions.Function2"
+        name-generic-aware="kotlin.jvm.functions.Function2&lt;kotlinx.coroutines.CoroutineScope, kotlin.coroutines.Continuation&lt;? super kotlin.Unit&gt;, java.lang.Object&gt;"
+        jni-type="Lkotlin/jvm/functions/Function2&lt;Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation&lt;-Lkotlin/Unit;&gt;;Ljava/lang/Object;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="create"
+        native="false"
+        return="kotlin.coroutines.Continuation&lt;kotlin.Unit&gt;"
+        jni-return="Lkotlin/coroutines/Continuation&lt;Lkotlin/Unit;&gt;;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;">
+        <parameter
+          name="value"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="completion"
+          type="kotlin.coroutines.Continuation&lt;?&gt;"
+          jni-type="Lkotlin/coroutines/Continuation&lt;*&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invoke"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="p0"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="p1"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invokeSuspend"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="$result"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="true"
+      name="FlowLiveDataConversions"
+      jni-signature="Landroidx/lifecycle/FlowLiveDataConversions;"
+      source-file-name="FlowLiveData.kt"
+      static="false"
+      visibility="public">
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="asFlow"
+        native="false"
+        return="kotlinx.coroutines.flow.Flow&lt;T&gt;"
+        jni-return="Lkotlinx/coroutines/flow/Flow&lt;TT;&gt;;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Landroidx/lifecycle/LiveData;)Lkotlinx/coroutines/flow/Flow;">
+        <typeParameters>
+          <typeParameter
+            name="T"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+        </typeParameters>
+        <parameter
+          name="obj"
+          type="androidx.lifecycle.LiveData&lt;T&gt;"
+          jni-type="Landroidx/lifecycle/LiveData&lt;TT;&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="asLiveData$default"
+        native="false"
+        return="androidx.lifecycle.LiveData"
+        jni-return="Landroidx/lifecycle/LiveData;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="true"
+        jni-signature="(Lkotlinx/coroutines/flow/Flow;Lkotlin/coroutines/CoroutineContext;JILjava/lang/Object;)Landroidx/lifecycle/LiveData;">
+        <parameter
+          name="p0"
+          type="kotlinx.coroutines.flow.Flow"
+          jni-type="Lkotlinx/coroutines/flow/Flow;" />
+        <parameter
+          name="p1"
+          type="kotlin.coroutines.CoroutineContext"
+          jni-type="Lkotlin/coroutines/CoroutineContext;" />
+        <parameter
+          name="p2"
+          type="long"
+          jni-type="J" />
+        <parameter
+          name="p3"
+          type="int"
+          jni-type="I" />
+        <parameter
+          name="p4"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="asLiveData$default"
+        native="false"
+        return="androidx.lifecycle.LiveData"
+        jni-return="Landroidx/lifecycle/LiveData;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="true"
+        jni-signature="(Lkotlinx/coroutines/flow/Flow;Lkotlin/coroutines/CoroutineContext;Ljava/time/Duration;ILjava/lang/Object;)Landroidx/lifecycle/LiveData;">
+        <parameter
+          name="p0"
+          type="kotlinx.coroutines.flow.Flow"
+          jni-type="Lkotlinx/coroutines/flow/Flow;" />
+        <parameter
+          name="p1"
+          type="kotlin.coroutines.CoroutineContext"
+          jni-type="Lkotlin/coroutines/CoroutineContext;" />
+        <parameter
+          name="p2"
+          type="java.time.Duration"
+          jni-type="Ljava/time/Duration;" />
+        <parameter
+          name="p3"
+          type="int"
+          jni-type="I" />
+        <parameter
+          name="p4"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="asLiveData"
+        native="false"
+        return="androidx.lifecycle.LiveData&lt;T&gt;"
+        jni-return="Landroidx/lifecycle/LiveData&lt;TT;&gt;;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Lkotlinx/coroutines/flow/Flow;)Landroidx/lifecycle/LiveData;">
+        <typeParameters>
+          <typeParameter
+            name="T"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+        </typeParameters>
+        <parameter
+          name="obj"
+          type="kotlinx.coroutines.flow.Flow&lt;? extends T&gt;"
+          jni-type="Lkotlinx/coroutines/flow/Flow&lt;+TT;&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="asLiveData"
+        native="false"
+        return="androidx.lifecycle.LiveData&lt;T&gt;"
+        jni-return="Landroidx/lifecycle/LiveData&lt;TT;&gt;;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Lkotlinx/coroutines/flow/Flow;Lkotlin/coroutines/CoroutineContext;)Landroidx/lifecycle/LiveData;">
+        <typeParameters>
+          <typeParameter
+            name="T"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+        </typeParameters>
+        <parameter
+          name="obj"
+          type="kotlinx.coroutines.flow.Flow&lt;? extends T&gt;"
+          jni-type="Lkotlinx/coroutines/flow/Flow&lt;+TT;&gt;;" />
+        <parameter
+          name="context"
+          type="kotlin.coroutines.CoroutineContext"
+          jni-type="Lkotlin/coroutines/CoroutineContext;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="asLiveData"
+        native="false"
+        return="androidx.lifecycle.LiveData&lt;T&gt;"
+        jni-return="Landroidx/lifecycle/LiveData&lt;TT;&gt;;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Lkotlinx/coroutines/flow/Flow;Lkotlin/coroutines/CoroutineContext;J)Landroidx/lifecycle/LiveData;">
+        <typeParameters>
+          <typeParameter
+            name="T"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+        </typeParameters>
+        <parameter
+          name="obj"
+          type="kotlinx.coroutines.flow.Flow&lt;? extends T&gt;"
+          jni-type="Lkotlinx/coroutines/flow/Flow&lt;+TT;&gt;;" />
+        <parameter
+          name="context"
+          type="kotlin.coroutines.CoroutineContext"
+          jni-type="Lkotlin/coroutines/CoroutineContext;" />
+        <parameter
+          name="timeoutInMs"
+          type="long"
+          jni-type="J" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="asLiveData"
+        native="false"
+        return="androidx.lifecycle.LiveData&lt;T&gt;"
+        jni-return="Landroidx/lifecycle/LiveData&lt;TT;&gt;;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Lkotlinx/coroutines/flow/Flow;Lkotlin/coroutines/CoroutineContext;Ljava/time/Duration;)Landroidx/lifecycle/LiveData;">
+        <typeParameters>
+          <typeParameter
+            name="T"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+        </typeParameters>
+        <parameter
+          name="obj"
+          type="kotlinx.coroutines.flow.Flow&lt;? extends T&gt;"
+          jni-type="Lkotlinx/coroutines/flow/Flow&lt;+TT;&gt;;" />
+        <parameter
+          name="context"
+          type="kotlin.coroutines.CoroutineContext"
+          jni-type="Lkotlin/coroutines/CoroutineContext;" />
+        <parameter
+          name="timeout"
+          type="java.time.Duration"
+          jni-type="Ljava/time/Duration;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/FlowLiveDataConversions;"
+      enclosing-method-name="asFlow"
+      enclosing-method-signature="(Landroidx/lifecycle/LiveData;)Lkotlinx/coroutines/flow/Flow;"
+      jni-extends="Lkotlin/coroutines/jvm/internal/SuspendLambda;"
+      extends="kotlin.coroutines.jvm.internal.SuspendLambda"
+      extends-generic-aware="kotlin.coroutines.jvm.internal.SuspendLambda"
+      final="true"
+      name="FlowLiveDataConversions.asFlow.1"
+      jni-signature="Landroidx/lifecycle/FlowLiveDataConversions$asFlow$1;"
+      source-file-name="FlowLiveData.kt"
+      static="true"
+      visibility="">
+      <implements
+        name="kotlin.jvm.functions.Function2"
+        name-generic-aware="kotlin.jvm.functions.Function2&lt;kotlinx.coroutines.flow.FlowCollector&lt;? super T&gt;, kotlin.coroutines.Continuation&lt;? super kotlin.Unit&gt;, java.lang.Object&gt;"
+        jni-type="Lkotlin/jvm/functions/Function2&lt;Lkotlinx/coroutines/flow/FlowCollector&lt;-TT;&gt;;Lkotlin/coroutines/Continuation&lt;-Lkotlin/Unit;&gt;;Ljava/lang/Object;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="create"
+        native="false"
+        return="kotlin.coroutines.Continuation&lt;kotlin.Unit&gt;"
+        jni-return="Lkotlin/coroutines/Continuation&lt;Lkotlin/Unit;&gt;;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;">
+        <parameter
+          name="value"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="completion"
+          type="kotlin.coroutines.Continuation&lt;?&gt;"
+          jni-type="Lkotlin/coroutines/Continuation&lt;*&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invoke"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="p0"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="p1"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invokeSuspend"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="$result"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/FlowLiveDataConversions$asFlow$1;"
+      enclosing-method-name="invokeSuspend"
+      enclosing-method-signature="(Ljava/lang/Object;)Ljava/lang/Object;"
+      jni-extends="Lkotlin/coroutines/jvm/internal/SuspendLambda;"
+      extends="kotlin.coroutines.jvm.internal.SuspendLambda"
+      extends-generic-aware="kotlin.coroutines.jvm.internal.SuspendLambda"
+      final="true"
+      name="FlowLiveDataConversions.asFlow.1.1"
+      jni-signature="Landroidx/lifecycle/FlowLiveDataConversions$asFlow$1$1;"
+      source-file-name="FlowLiveData.kt"
+      static="true"
+      visibility="">
+      <implements
+        name="kotlin.jvm.functions.Function2"
+        name-generic-aware="kotlin.jvm.functions.Function2&lt;kotlinx.coroutines.CoroutineScope, kotlin.coroutines.Continuation&lt;? super kotlin.Unit&gt;, java.lang.Object&gt;"
+        jni-type="Lkotlin/jvm/functions/Function2&lt;Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation&lt;-Lkotlin/Unit;&gt;;Ljava/lang/Object;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="create"
+        native="false"
+        return="kotlin.coroutines.Continuation&lt;kotlin.Unit&gt;"
+        jni-return="Lkotlin/coroutines/Continuation&lt;Lkotlin/Unit;&gt;;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;">
+        <parameter
+          name="value"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="completion"
+          type="kotlin.coroutines.Continuation&lt;?&gt;"
+          jni-type="Lkotlin/coroutines/Continuation&lt;*&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invoke"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="p0"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="p1"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invokeSuspend"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="$result"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/FlowLiveDataConversions$asFlow$1;"
+      enclosing-method-name="invokeSuspend"
+      enclosing-method-signature="(Ljava/lang/Object;)Ljava/lang/Object;"
+      jni-extends="Lkotlin/coroutines/jvm/internal/SuspendLambda;"
+      extends="kotlin.coroutines.jvm.internal.SuspendLambda"
+      extends-generic-aware="kotlin.coroutines.jvm.internal.SuspendLambda"
+      final="true"
+      name="FlowLiveDataConversions.asFlow.1.2"
+      jni-signature="Landroidx/lifecycle/FlowLiveDataConversions$asFlow$1$2;"
+      source-file-name="FlowLiveData.kt"
+      static="true"
+      visibility="">
+      <implements
+        name="kotlin.jvm.functions.Function2"
+        name-generic-aware="kotlin.jvm.functions.Function2&lt;kotlinx.coroutines.CoroutineScope, kotlin.coroutines.Continuation&lt;? super kotlin.Unit&gt;, java.lang.Object&gt;"
+        jni-type="Lkotlin/jvm/functions/Function2&lt;Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation&lt;-Lkotlin/Unit;&gt;;Ljava/lang/Object;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="create"
+        native="false"
+        return="kotlin.coroutines.Continuation&lt;kotlin.Unit&gt;"
+        jni-return="Lkotlin/coroutines/Continuation&lt;Lkotlin/Unit;&gt;;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;">
+        <parameter
+          name="value"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="completion"
+          type="kotlin.coroutines.Continuation&lt;?&gt;"
+          jni-type="Lkotlin/coroutines/Continuation&lt;*&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invoke"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="p0"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="p1"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invokeSuspend"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="$result"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/FlowLiveDataConversions$asFlow$1;"
+      enclosing-method-name="invokeSuspend"
+      enclosing-method-signature="(Ljava/lang/Object;)Ljava/lang/Object;"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="true"
+      name="FlowLiveDataConversions.asFlow.1.observer.1"
+      jni-signature="Landroidx/lifecycle/FlowLiveDataConversions$asFlow$1$observer$1;"
+      source-file-name="FlowLiveData.kt"
+      static="true"
+      visibility="">
+      <typeParameters>
+        <typeParameter
+          name="T"
+          jni-classBound="Ljava/lang/Object;"
+          classBound="java.lang.Object"
+          interfaceBounds=""
+          jni-interfaceBounds="" />
+      </typeParameters>
+      <implements
+        name="androidx.lifecycle.Observer"
+        name-generic-aware="androidx.lifecycle.Observer&lt;T&gt;"
+        jni-type="Landroidx/lifecycle/Observer&lt;TT;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="onChanged"
+        native="false"
+        return="void"
+        jni-return="V"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)V">
+        <parameter
+          name="it"
+          type="T"
+          jni-type="TT;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/FlowLiveDataConversions;"
+      enclosing-method-name="asLiveData"
+      enclosing-method-signature="(Lkotlinx/coroutines/flow/Flow;Lkotlin/coroutines/CoroutineContext;J)Landroidx/lifecycle/LiveData;"
+      jni-extends="Lkotlin/coroutines/jvm/internal/SuspendLambda;"
+      extends="kotlin.coroutines.jvm.internal.SuspendLambda"
+      extends-generic-aware="kotlin.coroutines.jvm.internal.SuspendLambda"
+      final="true"
+      name="FlowLiveDataConversions.asLiveData.1"
+      jni-signature="Landroidx/lifecycle/FlowLiveDataConversions$asLiveData$1;"
+      source-file-name="FlowLiveData.kt"
+      static="true"
+      visibility="">
+      <implements
+        name="kotlin.jvm.functions.Function2"
+        name-generic-aware="kotlin.jvm.functions.Function2&lt;androidx.lifecycle.LiveDataScope&lt;T&gt;, kotlin.coroutines.Continuation&lt;? super kotlin.Unit&gt;, java.lang.Object&gt;"
+        jni-type="Lkotlin/jvm/functions/Function2&lt;Landroidx/lifecycle/LiveDataScope&lt;TT;&gt;;Lkotlin/coroutines/Continuation&lt;-Lkotlin/Unit;&gt;;Ljava/lang/Object;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="create"
+        native="false"
+        return="kotlin.coroutines.Continuation&lt;kotlin.Unit&gt;"
+        jni-return="Lkotlin/coroutines/Continuation&lt;Lkotlin/Unit;&gt;;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;">
+        <parameter
+          name="value"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="completion"
+          type="kotlin.coroutines.Continuation&lt;?&gt;"
+          jni-type="Lkotlin/coroutines/Continuation&lt;*&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invoke"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="p0"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="p1"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invokeSuspend"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="$result"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/FlowLiveDataConversions$asLiveData$1$invokeSuspend$$inlined$collect$1;"
+      enclosing-method-name="emit$$forInline"
+      enclosing-method-signature="(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"
+      jni-extends="Lkotlin/coroutines/jvm/internal/ContinuationImpl;"
+      extends="kotlin.coroutines.jvm.internal.ContinuationImpl"
+      extends-generic-aware="kotlin.coroutines.jvm.internal.ContinuationImpl"
+      final="true"
+      name="FlowLiveDataConversions.asLiveData.1.invokeSuspend..inlined.collect.1.1"
+      jni-signature="Landroidx/lifecycle/FlowLiveDataConversions$asLiveData$1$invokeSuspend$$inlined$collect$1$1;"
+      static="true"
+      visibility="public">
+      <constructor
+        deprecated="not deprecated"
+        final="false"
+        name="FlowLiveDataConversions.asLiveData.1.invokeSuspend..inlined.collect.1.1"
+        static="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Landroidx/lifecycle/FlowLiveDataConversions$asLiveData$1$invokeSuspend$$inlined$collect$1;Lkotlin/coroutines/Continuation;)V">
+        <parameter
+          name="p0"
+          type="androidx.lifecycle.FlowLiveDataConversions.asLiveData.1.invokeSuspend..inlined.collect.1"
+          jni-type="Landroidx/lifecycle/FlowLiveDataConversions$asLiveData$1$invokeSuspend$$inlined$collect$1;" />
+        <parameter
+          name="p1"
+          type="kotlin.coroutines.Continuation"
+          jni-type="Lkotlin/coroutines/Continuation;" />
+      </constructor>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invokeSuspend"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="$result"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+    </class>
+    <interface
+      abstract="true"
+      deprecated="not deprecated"
+      final="false"
+      name="LiveDataScope"
+      jni-signature="Landroidx/lifecycle/LiveDataScope;"
+      source-file-name="CoroutineLiveData.kt"
+      static="false"
+      visibility="public">
+      <typeParameters>
+        <typeParameter
+          name="T"
+          jni-classBound="Ljava/lang/Object;"
+          classBound="java.lang.Object"
+          interfaceBounds=""
+          jni-interfaceBounds="" />
+      </typeParameters>
+      <method
+        abstract="true"
+        deprecated="not deprecated"
+        final="false"
+        name="emit"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;">
+        <parameter
+          name="p0"
+          type="T"
+          jni-type="TT;" />
+        <parameter
+          name="p1"
+          type="kotlin.coroutines.Continuation&lt;? super kotlin.Unit&gt;"
+          jni-type="Lkotlin/coroutines/Continuation&lt;-Lkotlin/Unit;&gt;;" />
+      </method>
+      <method
+        abstract="true"
+        deprecated="not deprecated"
+        final="false"
+        name="emitSource"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Landroidx/lifecycle/LiveData;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;">
+        <parameter
+          name="p0"
+          type="androidx.lifecycle.LiveData&lt;T&gt;"
+          jni-type="Landroidx/lifecycle/LiveData&lt;TT;&gt;;" />
+        <parameter
+          name="p1"
+          type="kotlin.coroutines.Continuation&lt;? super kotlinx.coroutines.DisposableHandle&gt;"
+          jni-type="Lkotlin/coroutines/Continuation&lt;-Lkotlinx/coroutines/DisposableHandle;&gt;;" />
+      </method>
+      <method
+        abstract="true"
+        deprecated="not deprecated"
+        final="false"
+        name="getLatestValue"
+        native="false"
+        return="T"
+        jni-return="TT;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="()Ljava/lang/Object;" />
+    </interface>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/LiveDataScopeImpl;"
+      enclosing-method-name="emit"
+      enclosing-method-signature="(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"
+      jni-extends="Lkotlin/coroutines/jvm/internal/SuspendLambda;"
+      extends="kotlin.coroutines.jvm.internal.SuspendLambda"
+      extends-generic-aware="kotlin.coroutines.jvm.internal.SuspendLambda"
+      final="true"
+      name="LiveDataScopeImpl.emit.2"
+      jni-signature="Landroidx/lifecycle/LiveDataScopeImpl$emit$2;"
+      source-file-name="CoroutineLiveData.kt"
+      static="true"
+      visibility="">
+      <implements
+        name="kotlin.jvm.functions.Function2"
+        name-generic-aware="kotlin.jvm.functions.Function2&lt;kotlinx.coroutines.CoroutineScope, kotlin.coroutines.Continuation&lt;? super kotlin.Unit&gt;, java.lang.Object&gt;"
+        jni-type="Lkotlin/jvm/functions/Function2&lt;Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation&lt;-Lkotlin/Unit;&gt;;Ljava/lang/Object;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="create"
+        native="false"
+        return="kotlin.coroutines.Continuation&lt;kotlin.Unit&gt;"
+        jni-return="Lkotlin/coroutines/Continuation&lt;Lkotlin/Unit;&gt;;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;">
+        <parameter
+          name="value"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="completion"
+          type="kotlin.coroutines.Continuation&lt;?&gt;"
+          jni-type="Lkotlin/coroutines/Continuation&lt;*&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invoke"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="p0"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="p1"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invokeSuspend"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="$result"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/LiveDataScopeImpl;"
+      enclosing-method-name="emitSource"
+      enclosing-method-signature="(Landroidx/lifecycle/LiveData;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"
+      jni-extends="Lkotlin/coroutines/jvm/internal/SuspendLambda;"
+      extends="kotlin.coroutines.jvm.internal.SuspendLambda"
+      extends-generic-aware="kotlin.coroutines.jvm.internal.SuspendLambda"
+      final="true"
+      name="LiveDataScopeImpl.emitSource.2"
+      jni-signature="Landroidx/lifecycle/LiveDataScopeImpl$emitSource$2;"
+      source-file-name="CoroutineLiveData.kt"
+      static="true"
+      visibility="">
+      <implements
+        name="kotlin.jvm.functions.Function2"
+        name-generic-aware="kotlin.jvm.functions.Function2&lt;kotlinx.coroutines.CoroutineScope, kotlin.coroutines.Continuation&lt;? super kotlinx.coroutines.DisposableHandle&gt;, java.lang.Object&gt;"
+        jni-type="Lkotlin/jvm/functions/Function2&lt;Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation&lt;-Lkotlinx/coroutines/DisposableHandle;&gt;;Ljava/lang/Object;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="create"
+        native="false"
+        return="kotlin.coroutines.Continuation&lt;kotlin.Unit&gt;"
+        jni-return="Lkotlin/coroutines/Continuation&lt;Lkotlin/Unit;&gt;;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;">
+        <parameter
+          name="value"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="completion"
+          type="kotlin.coroutines.Continuation&lt;?&gt;"
+          jni-type="Lkotlin/coroutines/Continuation&lt;*&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invoke"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="p0"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+        <parameter
+          name="p1"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="invokeSuspend"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="$result"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="true"
+      name="TransformationsKt"
+      jni-signature="Landroidx/lifecycle/TransformationsKt;"
+      source-file-name="Transformations.kt"
+      static="false"
+      visibility="public">
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="distinctUntilChanged"
+        native="false"
+        return="androidx.lifecycle.LiveData&lt;X&gt;"
+        jni-return="Landroidx/lifecycle/LiveData&lt;TX;&gt;;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Landroidx/lifecycle/LiveData;)Landroidx/lifecycle/LiveData;">
+        <typeParameters>
+          <typeParameter
+            name="X"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+        </typeParameters>
+        <parameter
+          name="obj"
+          type="androidx.lifecycle.LiveData&lt;X&gt;"
+          jni-type="Landroidx/lifecycle/LiveData&lt;TX;&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="map"
+        native="false"
+        return="androidx.lifecycle.LiveData&lt;Y&gt;"
+        jni-return="Landroidx/lifecycle/LiveData&lt;TY;&gt;;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Landroidx/lifecycle/LiveData;Lkotlin/jvm/functions/Function1;)Landroidx/lifecycle/LiveData;">
+        <typeParameters>
+          <typeParameter
+            name="X"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+          <typeParameter
+            name="Y"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+        </typeParameters>
+        <parameter
+          name="obj"
+          type="androidx.lifecycle.LiveData&lt;X&gt;"
+          jni-type="Landroidx/lifecycle/LiveData&lt;TX;&gt;;" />
+        <parameter
+          name="transform"
+          type="kotlin.jvm.functions.Function1&lt;? super X, ? extends Y&gt;"
+          jni-type="Lkotlin/jvm/functions/Function1&lt;-TX;+TY;&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="switchMap"
+        native="false"
+        return="androidx.lifecycle.LiveData&lt;Y&gt;"
+        jni-return="Landroidx/lifecycle/LiveData&lt;TY;&gt;;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Landroidx/lifecycle/LiveData;Lkotlin/jvm/functions/Function1;)Landroidx/lifecycle/LiveData;">
+        <typeParameters>
+          <typeParameter
+            name="X"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+          <typeParameter
+            name="Y"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+        </typeParameters>
+        <parameter
+          name="obj"
+          type="androidx.lifecycle.LiveData&lt;X&gt;"
+          jni-type="Landroidx/lifecycle/LiveData&lt;TX;&gt;;" />
+        <parameter
+          name="transform"
+          type="kotlin.jvm.functions.Function1&lt;? super X, ? extends androidx.lifecycle.LiveData&lt;Y&gt;&gt;"
+          jni-type="Lkotlin/jvm/functions/Function1&lt;-TX;+Landroidx/lifecycle/LiveData&lt;TY;&gt;;&gt;;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/TransformationsKt;"
+      enclosing-method-name="map"
+      enclosing-method-signature="(Landroidx/lifecycle/LiveData;Lkotlin/jvm/functions/Function1;)Landroidx/lifecycle/LiveData;"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="true"
+      name="TransformationsKt.map.1"
+      jni-signature="Landroidx/lifecycle/TransformationsKt$map$1;"
+      source-file-name="Transformations.kt"
+      static="true"
+      visibility="public">
+      <typeParameters>
+        <typeParameter
+          name="I"
+          jni-classBound="Ljava/lang/Object;"
+          classBound="java.lang.Object"
+          interfaceBounds=""
+          jni-interfaceBounds="" />
+        <typeParameter
+          name="O"
+          jni-classBound="Ljava/lang/Object;"
+          classBound="java.lang.Object"
+          interfaceBounds=""
+          jni-interfaceBounds="" />
+      </typeParameters>
+      <implements
+        name="androidx.arch.core.util.Function"
+        name-generic-aware="androidx.arch.core.util.Function&lt;X, Y&gt;"
+        jni-type="Landroidx/arch/core/util/Function&lt;TX;TY;&gt;;" />
+      <constructor
+        deprecated="not deprecated"
+        final="false"
+        name="TransformationsKt.map.1"
+        static="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Lkotlin/jvm/functions/Function1;)V">
+        <parameter
+          name="p0"
+          type="kotlin.jvm.functions.Function1"
+          jni-type="Lkotlin/jvm/functions/Function1;" />
+      </constructor>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="apply"
+        native="false"
+        return="Y"
+        jni-return="TY;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="it"
+          type="X"
+          jni-type="TX;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/TransformationsKt;"
+      enclosing-method-name="switchMap"
+      enclosing-method-signature="(Landroidx/lifecycle/LiveData;Lkotlin/jvm/functions/Function1;)Landroidx/lifecycle/LiveData;"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="true"
+      name="TransformationsKt.switchMap.1"
+      jni-signature="Landroidx/lifecycle/TransformationsKt$switchMap$1;"
+      source-file-name="Transformations.kt"
+      static="true"
+      visibility="public">
+      <typeParameters>
+        <typeParameter
+          name="I"
+          jni-classBound="Ljava/lang/Object;"
+          classBound="java.lang.Object"
+          interfaceBounds=""
+          jni-interfaceBounds="" />
+        <typeParameter
+          name="O"
+          jni-classBound="Ljava/lang/Object;"
+          classBound="java.lang.Object"
+          interfaceBounds=""
+          jni-interfaceBounds="" />
+      </typeParameters>
+      <implements
+        name="androidx.arch.core.util.Function"
+        name-generic-aware="androidx.arch.core.util.Function&lt;X, androidx.lifecycle.LiveData&lt;Y&gt;&gt;"
+        jni-type="Landroidx/arch/core/util/Function&lt;TX;Landroidx/lifecycle/LiveData&lt;TY;&gt;;&gt;;" />
+      <constructor
+        deprecated="not deprecated"
+        final="false"
+        name="TransformationsKt.switchMap.1"
+        static="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Lkotlin/jvm/functions/Function1;)V">
+        <parameter
+          name="p0"
+          type="kotlin.jvm.functions.Function1"
+          jni-type="Lkotlin/jvm/functions/Function1;" />
+      </constructor>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="apply"
+        native="false"
+        return="androidx.lifecycle.LiveData&lt;Y&gt;"
+        jni-return="Landroidx/lifecycle/LiveData&lt;TY;&gt;;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)Landroidx/lifecycle/LiveData;">
+        <parameter
+          name="it"
+          type="X"
+          jni-type="TX;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="apply"
+        native="false"
+        return="java.lang.Object"
+        jni-return="Ljava/lang/Object;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="true"
+        synthetic="true"
+        jni-signature="(Ljava/lang/Object;)Ljava/lang/Object;">
+        <parameter
+          name="p0"
+          type="java.lang.Object"
+          jni-type="Ljava/lang/Object;" />
+      </method>
+    </class>
+  </package>
+</api>

@@ -1,0 +1,116 @@
+<api
+  api-source="class-parse">
+  <package
+    name="androidx.lifecycle"
+    jni-name="androidx/lifecycle">
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="true"
+      name="LiveDataKt"
+      jni-signature="Landroidx/lifecycle/LiveDataKt;"
+      source-file-name="LiveData.kt"
+      static="false"
+      visibility="public">
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="observe"
+        native="false"
+        return="androidx.lifecycle.Observer&lt;T&gt;"
+        jni-return="Landroidx/lifecycle/Observer&lt;TT;&gt;;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Landroidx/lifecycle/LiveData;Landroidx/lifecycle/LifecycleOwner;Lkotlin/jvm/functions/Function1;)Landroidx/lifecycle/Observer;">
+        <typeParameters>
+          <typeParameter
+            name="T"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+        </typeParameters>
+        <parameter
+          name="obj"
+          type="androidx.lifecycle.LiveData&lt;T&gt;"
+          jni-type="Landroidx/lifecycle/LiveData&lt;TT;&gt;;" />
+        <parameter
+          name="owner"
+          type="androidx.lifecycle.LifecycleOwner"
+          jni-type="Landroidx/lifecycle/LifecycleOwner;" />
+        <parameter
+          name="onChanged"
+          type="kotlin.jvm.functions.Function1&lt;? super T, kotlin.Unit&gt;"
+          jni-type="Lkotlin/jvm/functions/Function1&lt;-TT;Lkotlin/Unit;&gt;;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/LiveDataKt;"
+      enclosing-method-name="observe"
+      enclosing-method-signature="(Landroidx/lifecycle/LiveData;Landroidx/lifecycle/LifecycleOwner;Lkotlin/jvm/functions/Function1;)Landroidx/lifecycle/Observer;"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="true"
+      name="LiveDataKt.observe.wrappedObserver.1"
+      jni-signature="Landroidx/lifecycle/LiveDataKt$observe$wrappedObserver$1;"
+      source-file-name="LiveData.kt"
+      static="true"
+      visibility="public">
+      <typeParameters>
+        <typeParameter
+          name="T"
+          jni-classBound="Ljava/lang/Object;"
+          classBound="java.lang.Object"
+          interfaceBounds=""
+          jni-interfaceBounds="" />
+      </typeParameters>
+      <implements
+        name="androidx.lifecycle.Observer"
+        name-generic-aware="androidx.lifecycle.Observer&lt;T&gt;"
+        jni-type="Landroidx/lifecycle/Observer&lt;TT;&gt;;" />
+      <constructor
+        deprecated="not deprecated"
+        final="false"
+        name="LiveDataKt.observe.wrappedObserver.1"
+        static="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Lkotlin/jvm/functions/Function1;)V">
+        <parameter
+          name="p0"
+          type="kotlin.jvm.functions.Function1"
+          jni-type="Lkotlin/jvm/functions/Function1;" />
+      </constructor>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="true"
+        name="onChanged"
+        native="false"
+        return="void"
+        jni-return="V"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)V">
+        <parameter
+          name="t"
+          type="T"
+          jni-type="TT;" />
+      </method>
+    </class>
+  </package>
+</api>
