@@ -1,0 +1,6 @@
+androidx/lifecycle/ComputableLiveData = Androidx.Lifecycle.ComputableLiveData
+  <init>()V = .ctor()
+  <init>(Ljava/util/concurrent/Executor;)V = .ctor(Java.Util.Concurrent.IExecutor)
+  compute()Ljava/lang/Object; = Compute()
+  invalidate()V = Invalidate()
+androidx/lifecycle/Transformations = Androidx.Lifecycle.Transformations

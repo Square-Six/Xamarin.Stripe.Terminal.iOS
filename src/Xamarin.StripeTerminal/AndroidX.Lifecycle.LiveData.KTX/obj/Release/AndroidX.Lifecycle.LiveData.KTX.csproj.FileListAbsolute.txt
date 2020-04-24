@@ -1,0 +1,14 @@
+C:/Users/after/Desktop/Xamarin.Stripe.Terminal/AndroidX.Lifecycle.LiveData.KTX/bin/Release/AndroidX.Lifecycle.LiveData.KTX.dll
+C:/Users/after/Desktop/Xamarin.Stripe.Terminal/AndroidX.Lifecycle.LiveData.KTX/bin/Release/AndroidX.Lifecycle.LiveData.KTX.pdb
+C:/Users/after/Desktop/Xamarin.Stripe.Terminal/AndroidX.Lifecycle.LiveData.KTX/obj/Release/MonoAndroid,Version=v9.0.AssemblyAttributes.cs
+C:/Users/after/Desktop/Xamarin.Stripe.Terminal/AndroidX.Lifecycle.LiveData.KTX/obj/Release/AndroidX.Lifecycle.LiveData.KTX.csprojAssemblyReference.cache
+C:/Users/after/Desktop/Xamarin.Stripe.Terminal/AndroidX.Lifecycle.LiveData.KTX/obj/Release/AndroidX.Lifecycle.LiveData.KTX.csproj.CoreCompileInputs.cache
+C:/Users/after/Desktop/Xamarin.Stripe.Terminal/AndroidX.Lifecycle.LiveData.KTX/obj/Release/AndroidX.Lifecycle.LiveData.KTX.dll
+C:/Users/after/Desktop/Xamarin.Stripe.Terminal/AndroidX.Lifecycle.LiveData.KTX/obj/Release/AndroidX.Lifecycle.LiveData.KTX.pdb
+/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/AndroidX.Lifecycle.LiveData.KTX/bin/Release/AndroidX.Lifecycle.LiveData.KTX.dll
+/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/AndroidX.Lifecycle.LiveData.KTX/bin/Release/AndroidX.Lifecycle.LiveData.KTX.pdb
+/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/AndroidX.Lifecycle.LiveData.KTX/obj/Release/MonoAndroid,Version=v9.0.AssemblyAttributes.cs
+/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/AndroidX.Lifecycle.LiveData.KTX/obj/Release/AndroidX.Lifecycle.LiveData.KTX.csprojAssemblyReference.cache
+/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/AndroidX.Lifecycle.LiveData.KTX/obj/Release/AndroidX.Lifecycle.LiveData.KTX.csproj.CoreCompileInputs.cache
+/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/AndroidX.Lifecycle.LiveData.KTX/obj/Release/AndroidX.Lifecycle.LiveData.KTX.dll
+/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/AndroidX.Lifecycle.LiveData.KTX/obj/Release/AndroidX.Lifecycle.LiveData.KTX.pdb

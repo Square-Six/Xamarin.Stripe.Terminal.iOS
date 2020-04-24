@@ -1,0 +1,17 @@
+<api>
+  <package name="androidx.lifecycle" jni-name="androidx/lifecycle">
+    <class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" jni-extends="Ljava/lang/Object;" final="true" name="CoroutineLiveDataKt" static="false" visibility="public" jni-signature="Landroidx/lifecycle/CoroutineLiveDataKt;">
+      <field deprecated="not deprecated" final="true" name="DEFAULT_TIMEOUT" jni-signature="J" static="true" transient="false" type="long" type-generic-aware="long" value="5000" visibility="public" volatile="false">
+      </field>
+    </class>
+    <class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" jni-extends="Ljava/lang/Object;" final="true" name="FlowLiveDataConversions" static="false" visibility="public" jni-signature="Landroidx/lifecycle/FlowLiveDataConversions;"></class>
+    <interface abstract="true" deprecated="not deprecated" final="false" name="LiveDataScope" static="false" visibility="public" jni-signature="Landroidx/lifecycle/LiveDataScope;">
+      <typeParameters>
+        <typeParameter name="T" classBound="java.lang.Object" jni-classBound="Ljava/lang/Object;"></typeParameter>
+      </typeParameters>
+      <method abstract="true" deprecated="not deprecated" final="false" name="getLatestValue" jni-signature="()Ljava/lang/Object;" bridge="false" native="false" return="T" jni-return="TT;" static="false" synchronized="false" synthetic="false" visibility="public">
+      </method>
+    </interface>
+    <class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" jni-extends="Ljava/lang/Object;" final="true" name="TransformationsKt" static="false" visibility="public" jni-signature="Landroidx/lifecycle/TransformationsKt;"></class>
+  </package>
+</api>

@@ -1,0 +1,617 @@
+<api
+  api-source="class-parse">
+  <package
+    name="androidx.lifecycle"
+    jni-name="androidx/lifecycle">
+    <class
+      abstract="true"
+      deprecated="not deprecated"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="false"
+      name="ComputableLiveData"
+      jni-signature="Landroidx/lifecycle/ComputableLiveData;"
+      source-file-name="ComputableLiveData.java"
+      static="false"
+      visibility="public">
+      <typeParameters>
+        <typeParameter
+          name="T"
+          jni-classBound="Ljava/lang/Object;"
+          classBound="java.lang.Object"
+          interfaceBounds=""
+          jni-interfaceBounds="" />
+      </typeParameters>
+      <constructor
+        deprecated="not deprecated"
+        final="false"
+        name="ComputableLiveData"
+        static="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="()V" />
+      <constructor
+        deprecated="not deprecated"
+        final="false"
+        name="ComputableLiveData"
+        static="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/util/concurrent/Executor;)V">
+        <parameter
+          name="executor"
+          type="java.util.concurrent.Executor"
+          jni-type="Ljava/util/concurrent/Executor;" />
+      </constructor>
+      <method
+        abstract="true"
+        deprecated="not deprecated"
+        final="false"
+        name="compute"
+        native="false"
+        return="T"
+        jni-return="TT;"
+        static="false"
+        synchronized="false"
+        visibility="protected"
+        bridge="false"
+        synthetic="false"
+        jni-signature="()Ljava/lang/Object;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="getLiveData"
+        native="false"
+        return="androidx.lifecycle.LiveData&lt;T&gt;"
+        jni-return="Landroidx/lifecycle/LiveData&lt;TT;&gt;;"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="()Landroidx/lifecycle/LiveData;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="invalidate"
+        native="false"
+        return="void"
+        jni-return="V"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="()V" />
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/ComputableLiveData;"
+      enclosing-method-name="&lt;init&gt;"
+      enclosing-method-signature="(Ljava/util/concurrent/Executor;)V"
+      jni-extends="Landroidx/lifecycle/LiveData;"
+      extends="androidx.lifecycle.LiveData"
+      extends-generic-aware="androidx.lifecycle.LiveData&lt;T&gt;"
+      final="false"
+      name="ComputableLiveData.1"
+      jni-signature="Landroidx/lifecycle/ComputableLiveData$1;"
+      source-file-name="ComputableLiveData.java"
+      static="false"
+      visibility="">
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="onActive"
+        native="false"
+        return="void"
+        jni-return="V"
+        static="false"
+        synchronized="false"
+        visibility="protected"
+        bridge="false"
+        synthetic="false"
+        jni-signature="()V" />
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/ComputableLiveData;"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="false"
+      name="ComputableLiveData.2"
+      jni-signature="Landroidx/lifecycle/ComputableLiveData$2;"
+      source-file-name="ComputableLiveData.java"
+      static="false"
+      visibility="">
+      <implements
+        name="java.lang.Runnable"
+        name-generic-aware="java.lang.Runnable"
+        jni-type="Ljava/lang/Runnable;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="run"
+        native="false"
+        return="void"
+        jni-return="V"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="()V" />
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/ComputableLiveData;"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="false"
+      name="ComputableLiveData.3"
+      jni-signature="Landroidx/lifecycle/ComputableLiveData$3;"
+      source-file-name="ComputableLiveData.java"
+      static="false"
+      visibility="">
+      <implements
+        name="java.lang.Runnable"
+        name-generic-aware="java.lang.Runnable"
+        jni-type="Ljava/lang/Runnable;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="run"
+        native="false"
+        return="void"
+        jni-return="V"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="()V" />
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      jni-extends="Landroidx/lifecycle/MutableLiveData;"
+      extends="androidx.lifecycle.MutableLiveData"
+      extends-generic-aware="androidx.lifecycle.MutableLiveData&lt;T&gt;"
+      final="false"
+      name="MediatorLiveData"
+      jni-signature="Landroidx/lifecycle/MediatorLiveData;"
+      source-file-name="MediatorLiveData.java"
+      static="false"
+      visibility="public">
+      <typeParameters>
+        <typeParameter
+          name="T"
+          jni-classBound="Ljava/lang/Object;"
+          classBound="java.lang.Object"
+          interfaceBounds=""
+          jni-interfaceBounds="" />
+      </typeParameters>
+      <constructor
+        deprecated="not deprecated"
+        final="false"
+        name="MediatorLiveData"
+        static="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="()V" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="addSource"
+        native="false"
+        return="void"
+        jni-return="V"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Landroidx/lifecycle/LiveData;Landroidx/lifecycle/Observer;)V">
+        <typeParameters>
+          <typeParameter
+            name="S"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+        </typeParameters>
+        <parameter
+          name="source"
+          type="androidx.lifecycle.LiveData&lt;S&gt;"
+          jni-type="Landroidx/lifecycle/LiveData&lt;TS;&gt;;" />
+        <parameter
+          name="onChanged"
+          type="androidx.lifecycle.Observer&lt;? super S&gt;"
+          jni-type="Landroidx/lifecycle/Observer&lt;-TS;&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="onActive"
+        native="false"
+        return="void"
+        jni-return="V"
+        static="false"
+        synchronized="false"
+        visibility="protected"
+        bridge="false"
+        synthetic="false"
+        jni-signature="()V" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="onInactive"
+        native="false"
+        return="void"
+        jni-return="V"
+        static="false"
+        synchronized="false"
+        visibility="protected"
+        bridge="false"
+        synthetic="false"
+        jni-signature="()V" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="removeSource"
+        native="false"
+        return="void"
+        jni-return="V"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Landroidx/lifecycle/LiveData;)V">
+        <typeParameters>
+          <typeParameter
+            name="S"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+        </typeParameters>
+        <parameter
+          name="toRemote"
+          type="androidx.lifecycle.LiveData&lt;S&gt;"
+          jni-type="Landroidx/lifecycle/LiveData&lt;TS;&gt;;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="false"
+      name="MediatorLiveData.Source"
+      jni-signature="Landroidx/lifecycle/MediatorLiveData$Source;"
+      source-file-name="MediatorLiveData.java"
+      static="true"
+      visibility="private">
+      <typeParameters>
+        <typeParameter
+          name="V"
+          jni-classBound="Ljava/lang/Object;"
+          classBound="java.lang.Object"
+          interfaceBounds=""
+          jni-interfaceBounds="" />
+      </typeParameters>
+      <implements
+        name="androidx.lifecycle.Observer"
+        name-generic-aware="androidx.lifecycle.Observer&lt;V&gt;"
+        jni-type="Landroidx/lifecycle/Observer&lt;TV;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="onChanged"
+        native="false"
+        return="void"
+        jni-return="V"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)V">
+        <parameter
+          name="v"
+          type="V"
+          jni-type="TV;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="false"
+      name="Transformations"
+      jni-signature="Landroidx/lifecycle/Transformations;"
+      source-file-name="Transformations.java"
+      static="false"
+      visibility="public">
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="distinctUntilChanged"
+        native="false"
+        return="androidx.lifecycle.LiveData&lt;X&gt;"
+        jni-return="Landroidx/lifecycle/LiveData&lt;TX;&gt;;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Landroidx/lifecycle/LiveData;)Landroidx/lifecycle/LiveData;">
+        <typeParameters>
+          <typeParameter
+            name="X"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+        </typeParameters>
+        <parameter
+          name="source"
+          type="androidx.lifecycle.LiveData&lt;X&gt;"
+          jni-type="Landroidx/lifecycle/LiveData&lt;TX;&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="map"
+        native="false"
+        return="androidx.lifecycle.LiveData&lt;Y&gt;"
+        jni-return="Landroidx/lifecycle/LiveData&lt;TY;&gt;;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Landroidx/lifecycle/LiveData;Landroidx/arch/core/util/Function;)Landroidx/lifecycle/LiveData;">
+        <typeParameters>
+          <typeParameter
+            name="X"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+          <typeParameter
+            name="Y"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+        </typeParameters>
+        <parameter
+          name="source"
+          type="androidx.lifecycle.LiveData&lt;X&gt;"
+          jni-type="Landroidx/lifecycle/LiveData&lt;TX;&gt;;" />
+        <parameter
+          name="mapFunction"
+          type="androidx.arch.core.util.Function&lt;X, Y&gt;"
+          jni-type="Landroidx/arch/core/util/Function&lt;TX;TY;&gt;;" />
+      </method>
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="switchMap"
+        native="false"
+        return="androidx.lifecycle.LiveData&lt;Y&gt;"
+        jni-return="Landroidx/lifecycle/LiveData&lt;TY;&gt;;"
+        static="true"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Landroidx/lifecycle/LiveData;Landroidx/arch/core/util/Function;)Landroidx/lifecycle/LiveData;">
+        <typeParameters>
+          <typeParameter
+            name="X"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+          <typeParameter
+            name="Y"
+            jni-classBound="Ljava/lang/Object;"
+            classBound="java.lang.Object"
+            interfaceBounds=""
+            jni-interfaceBounds="" />
+        </typeParameters>
+        <parameter
+          name="source"
+          type="androidx.lifecycle.LiveData&lt;X&gt;"
+          jni-type="Landroidx/lifecycle/LiveData&lt;TX;&gt;;" />
+        <parameter
+          name="switchMapFunction"
+          type="androidx.arch.core.util.Function&lt;X, androidx.lifecycle.LiveData&lt;Y&gt;&gt;"
+          jni-type="Landroidx/arch/core/util/Function&lt;TX;Landroidx/lifecycle/LiveData&lt;TY;&gt;;&gt;;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/Transformations;"
+      enclosing-method-name="map"
+      enclosing-method-signature="(Landroidx/lifecycle/LiveData;Landroidx/arch/core/util/Function;)Landroidx/lifecycle/LiveData;"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="true"
+      name="Transformations.1"
+      jni-signature="Landroidx/lifecycle/Transformations$1;"
+      source-file-name="Transformations.java"
+      static="true"
+      visibility="">
+      <implements
+        name="androidx.lifecycle.Observer"
+        name-generic-aware="androidx.lifecycle.Observer&lt;X&gt;"
+        jni-type="Landroidx/lifecycle/Observer&lt;TX;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="onChanged"
+        native="false"
+        return="void"
+        jni-return="V"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)V">
+        <parameter
+          name="x"
+          type="X"
+          jni-type="TX;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/Transformations;"
+      enclosing-method-name="switchMap"
+      enclosing-method-signature="(Landroidx/lifecycle/LiveData;Landroidx/arch/core/util/Function;)Landroidx/lifecycle/LiveData;"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="true"
+      name="Transformations.2"
+      jni-signature="Landroidx/lifecycle/Transformations$2;"
+      source-file-name="Transformations.java"
+      static="true"
+      visibility="">
+      <implements
+        name="androidx.lifecycle.Observer"
+        name-generic-aware="androidx.lifecycle.Observer&lt;X&gt;"
+        jni-type="Landroidx/lifecycle/Observer&lt;TX;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="onChanged"
+        native="false"
+        return="void"
+        jni-return="V"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)V">
+        <parameter
+          name="x"
+          type="X"
+          jni-type="TX;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/Transformations$2;"
+      enclosing-method-name="onChanged"
+      enclosing-method-signature="(Ljava/lang/Object;)V"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="false"
+      name="Transformations.2.1"
+      jni-signature="Landroidx/lifecycle/Transformations$2$1;"
+      source-file-name="Transformations.java"
+      static="false"
+      visibility="">
+      <implements
+        name="androidx.lifecycle.Observer"
+        name-generic-aware="androidx.lifecycle.Observer&lt;Y&gt;"
+        jni-type="Landroidx/lifecycle/Observer&lt;TY;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="onChanged"
+        native="false"
+        return="void"
+        jni-return="V"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)V">
+        <parameter
+          name="y"
+          type="Y"
+          jni-type="TY;" />
+      </method>
+    </class>
+    <class
+      abstract="false"
+      deprecated="not deprecated"
+      enclosing-method-jni-type="Landroidx/lifecycle/Transformations;"
+      enclosing-method-name="distinctUntilChanged"
+      enclosing-method-signature="(Landroidx/lifecycle/LiveData;)Landroidx/lifecycle/LiveData;"
+      jni-extends="Ljava/lang/Object;"
+      extends="java.lang.Object"
+      extends-generic-aware="java.lang.Object"
+      final="true"
+      name="Transformations.3"
+      jni-signature="Landroidx/lifecycle/Transformations$3;"
+      source-file-name="Transformations.java"
+      static="true"
+      visibility="">
+      <implements
+        name="androidx.lifecycle.Observer"
+        name-generic-aware="androidx.lifecycle.Observer&lt;X&gt;"
+        jni-type="Landroidx/lifecycle/Observer&lt;TX;&gt;;" />
+      <method
+        abstract="false"
+        deprecated="not deprecated"
+        final="false"
+        name="onChanged"
+        native="false"
+        return="void"
+        jni-return="V"
+        static="false"
+        synchronized="false"
+        visibility="public"
+        bridge="false"
+        synthetic="false"
+        jni-signature="(Ljava/lang/Object;)V">
+        <parameter
+          name="currentValue"
+          type="X"
+          jni-type="TX;" />
+      </method>
+    </class>
+  </package>
+</api>
