@@ -12,7 +12,7 @@
     <AssemblyName>NativeLibrary</AssemblyName>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
             <PackageId>Xamarin.StripeTerminal.iOS</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.1.1</PackageVersion>
     <Authors>Jamie Smith</Authors>
     <NeutralLanguage>en</NeutralLanguage>
     <Owners>SquareSix</Owners>
