@@ -1,1 +1,0 @@
-[assembly: ObjCRuntime.LinkWith ("StripeTerminal.framework", SmartLink = true, ForceLoad = true, Frameworks = "CoreBluetooth CoreLocation ExternalAccessory Foundation Security UIKit CoreFoundation CoreGraphics SystemConfiguration GSS")]

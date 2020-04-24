@@ -1,5 +1,0 @@
-/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/Xamarin.StripeTerminal.iOS/bin/Release/NativeLibrary.dll
-/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/Xamarin.StripeTerminal.iOS/bin/Release/NativeLibrary.pdb
-/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/Xamarin.StripeTerminal.iOS/obj/Release/Xamarin.Stripe.Terminal.iOS.csproj.CoreCompileInputs.cache
-/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/Xamarin.StripeTerminal.iOS/obj/Release/NativeLibrary.dll
-/Users/jamie/Projects/SquareSix/Xamarin.StripeTerminal/src/Xamarin.StripeTerminal/Xamarin.StripeTerminal.iOS/obj/Release/NativeLibrary.pdb

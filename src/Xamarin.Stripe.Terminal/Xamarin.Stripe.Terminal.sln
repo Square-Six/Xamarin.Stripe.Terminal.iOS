@@ -1,0 +1,41 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.Stripe.Terminal.Android", "Xamarin.Stripe.Terminal.Android\Xamarin.Stripe.Terminal.Android.csproj", "{6FD5D83D-CC75-413F-8009-E1AD1EB5CF0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidX.Lifecycle.LiveData", "AndroidX.Lifecycle.LiveData\AndroidX.Lifecycle.LiveData.csproj", "{553BC43B-BE3C-4E12-BB67-410E15359806}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidX.Lifecycle.LiveData.Core.KTX", "AndroidX.Lifecycle.LiveData.Core.KTX\AndroidX.Lifecycle.LiveData.Core.KTX.csproj", "{DCDEDDB8-7443-48B2-BA86-15F460AC7C78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidX.Lifecycle.LiveData.KTX", "AndroidX.Lifecycle.LiveData.KTX\AndroidX.Lifecycle.LiveData.KTX.csproj", "{7D44E3FA-5530-4C6A-AF2C-33DBAB93AF76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.Stripe.Terminal.iOS", "Xamarin.Stripe.Terminal.iOS\Xamarin.Stripe.Terminal.iOS.csproj", "{1C68F92A-5B0B-45D1-A651-1D145661D64B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FD5D83D-CC75-413F-8009-E1AD1EB5CF0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FD5D83D-CC75-413F-8009-E1AD1EB5CF0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FD5D83D-CC75-413F-8009-E1AD1EB5CF0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FD5D83D-CC75-413F-8009-E1AD1EB5CF0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{553BC43B-BE3C-4E12-BB67-410E15359806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{553BC43B-BE3C-4E12-BB67-410E15359806}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{553BC43B-BE3C-4E12-BB67-410E15359806}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{553BC43B-BE3C-4E12-BB67-410E15359806}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCDEDDB8-7443-48B2-BA86-15F460AC7C78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCDEDDB8-7443-48B2-BA86-15F460AC7C78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCDEDDB8-7443-48B2-BA86-15F460AC7C78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCDEDDB8-7443-48B2-BA86-15F460AC7C78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D44E3FA-5530-4C6A-AF2C-33DBAB93AF76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D44E3FA-5530-4C6A-AF2C-33DBAB93AF76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D44E3FA-5530-4C6A-AF2C-33DBAB93AF76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D44E3FA-5530-4C6A-AF2C-33DBAB93AF76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C68F92A-5B0B-45D1-A651-1D145661D64B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C68F92A-5B0B-45D1-A651-1D145661D64B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C68F92A-5B0B-45D1-A651-1D145661D64B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C68F92A-5B0B-45D1-A651-1D145661D64B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
