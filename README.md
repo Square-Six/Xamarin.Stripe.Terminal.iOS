@@ -2,7 +2,7 @@
 
 [![NuGet](https://img.shields.io/nuget/v/Xamarin.Stripe.Terminal.iOS.svg)](https://www.nuget.org/packages/Xamarin.Stripe.Terminal.iOS/)
 
-The official [Stripe][stripe] Terminal iOS SDK Bindings for Xamarin.iOS
+[Stripe][stripe] Terminal iOS SDK Bindings for Xamarin.iOS
 
 ## Installation
 
