@@ -7,9 +7,9 @@
     <ProjectGuid>{1C68F92A-5B0B-45D1-A651-1D145661D64B}</ProjectGuid>
     <TemplateGuid>{b6f3ff35-79b2-4f25-a2fc-60a7cf61013b}</TemplateGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>NativeLibrary</RootNamespace>
+    <RootNamespace>Xamarin.Stripe.Terminal.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>NativeLibrary</AssemblyName>
+    <AssemblyName>Xamarin.Stripe.Terminal.iOS</AssemblyName>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <PackageId>Xamarin.Stripe.Terminal.iOS</PackageId>
     <PackageVersion>1.1.1</PackageVersion>
@@ -21,7 +21,6 @@
     <Title>StripeTerminal SDK bindings for Xamarin.iOS.</Title>
     <Description>This is the StripeTerminal SDK bindings for Xamarin.iOS.</Description>
     <releaseNotes>This is the initial version.</releaseNotes>
-    <PackOnBuild>true</PackOnBuild>
     <Copyright>SquareSix 2020</Copyright>
     <ReleaseVersion>1.1.1</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
@@ -37,7 +36,6 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
@@ -47,13 +45,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Xamarin.iOS" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="NuGet.Build.Packaging">
-      <Version>0.2.5-dev.8</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
