@@ -44,6 +44,12 @@ NS_SWIFT_NAME(CardPresentDetails)
 @property (nonatomic, readonly) NSInteger expYear;
 
 /**
+ The cardholder name as read from the card, in ISO 7813 format. May include
+ alphanumeric characters, special characters and first/last name separator (/).
+ */
+@property (nonatomic, nullable, readonly) NSString *cardholderName;
+
+/**
  The card's funding type.
  */
 @property (nonatomic, readonly) SCPCardFundingType funding;
@@ -87,7 +93,7 @@ NS_SWIFT_NAME(CardPresentDetails)
 /**
  You cannot directly instantiate this class.
  */
-- (instancetype)new NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
 
 @end
 

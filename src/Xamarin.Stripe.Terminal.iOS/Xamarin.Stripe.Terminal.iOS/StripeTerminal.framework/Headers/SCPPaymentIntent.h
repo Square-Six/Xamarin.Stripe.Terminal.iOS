@@ -35,6 +35,10 @@ typedef NS_ENUM(NSUInteger, SCPPaymentIntentStatus) {
      */
     SCPPaymentIntentStatusRequiresCapture,
     /**
+     The PaymentIntent is in the middle of full EMV processing.
+     */
+    SCPPaymentIntentStatusProcessing,
+    /**
      The PaymentIntent was canceled.
      */
     SCPPaymentIntentStatusCanceled,
@@ -106,7 +110,7 @@ NS_SWIFT_NAME(PaymentIntent)
  You cannot directly instantiate `SCPPaymentIntent`. You should only use
  one that has been returned by our SDK.
  */
-- (instancetype)new NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
 
 @end
 
