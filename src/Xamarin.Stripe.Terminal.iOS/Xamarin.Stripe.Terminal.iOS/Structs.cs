@@ -2,8 +2,9 @@
 using ObjCRuntime;
 
 namespace StripeTerminal
-{ 
-	public enum SCPCardBrand
+{
+	[Native]
+	public enum SCPCardBrand : long
 	{
 		Visa,
 		Amex,
@@ -14,7 +15,8 @@ namespace StripeTerminal
 		Unknown
 	}
 
-	public enum SCPCardFundingType
+	[Native]
+	public enum SCPCardFundingType : long
 	{
 		Debit,
 		Credit,
@@ -22,32 +24,40 @@ namespace StripeTerminal
 		Other
 	}
 
-	public enum SCPChargeStatus
+	[Native]
+	public enum SCPChargeStatus : ulong
 	{
 		Succeeded,
 		Pending,
 		Failed
 	}
 
-	public enum SCPConnectionStatus
+	[Native]
+	public enum SCPConnectionStatus : ulong
 	{
 		NotConnected,
 		Connected,
 		Connecting
 	}
 
-	public enum SCPDeviceType
+	[Native]
+	public enum SCPDeviceType : ulong
 	{
-		SCPDeviceTypeChipper2X
+		Chipper2X,
+		VerifoneP400,
+		WisePad3
 	}
 
-	public enum SCPDiscoveryMethod
+	[Native]
+	public enum SCPDiscoveryMethod : ulong
 	{
-		Scan,
-		Proximity
+		BluetoothScan,
+		BluetoothProximity,
+		Internet
 	}
 
-	public enum SCPPaymentStatus
+	[Native]
+	public enum SCPPaymentStatus : ulong
 	{
 		NotReady,
 		Ready,
@@ -55,15 +65,18 @@ namespace StripeTerminal
 		Processing
 	}
 
-	public enum SCPReaderInputOptions 
+	[Flags]
+	[Native]
+	public enum SCPReaderInputOptions : ulong
 	{
-		None = 0,
-		SwipeCard = 1 << 0,
-		InsertCard = 1 << 1,
-		TapCard = 1 << 2
+		None = 0x0,
+		SwipeCard = 1uL << 0,
+		InsertCard = 1uL << 1,
+		TapCard = 1uL << 2
 	}
 
-	public enum SCPReaderDisplayMessage
+	[Native]
+	public enum SCPReaderDisplayMessage : ulong
 	{
 		RetryCard,
 		InsertCard,
@@ -75,19 +88,33 @@ namespace StripeTerminal
 		TryAnotherCard
 	}
 
-	public enum SCPReaderEvent
+	[Native]
+	public enum SCPReaderEvent : ulong
 	{
 		Inserted,
 		Removed
 	}
 
-	public enum SCPLogLevel
+	[Native]
+	public enum SCPLogLevel : ulong
 	{
 		None,
 		Verbose
 	}
 
-	public enum SCPError
+	[Native]
+	public enum SCPPaymentIntentStatus : ulong
+	{
+		RequiresPaymentMethod,
+		RequiresConfirmation,
+		RequiresCapture,
+		Processing,
+		Canceled,
+		Succeeded
+	}
+
+	[Native]
+	public enum SCPError : long
 	{
 		Busy = 1000,
 		CancelFailedAlreadyCompleted = 1010,
@@ -96,6 +123,7 @@ namespace StripeTerminal
 		ConnectionTokenProviderCompletedWithNothing = 1510,
 		ProcessInvalidPaymentIntent = 1530,
 		NilPaymentIntent = 1540,
+		NilRefundPaymentMethod = 1550,
 		InvalidClientSecret = 1560,
 		MustBeDiscoveringToConnect = 1570,
 		CannotConnectToUndiscoveredReader = 1580,
@@ -125,9 +153,13 @@ namespace StripeTerminal
 		ReaderSoftwareUpdateFailedReaderError = 3830,
 		ReaderSoftwareUpdateFailedServerError = 3840,
 		UnsupportedReaderVersion = 3850,
+		UnknownReaderIpAddress = 3860,
+		InternetConnectTimeOut = 3870,
+		ConnectFailedReaderIsInUse = 3880,
 		UnexpectedSdkError = 5000,
 		PaymentDeclinedByStripeAPI = 6000,
 		PaymentDeclinedByReader = 6500,
+		RefundFailed = 6800,
 		NotConnectedToInternet = 9000,
 		RequestTimedOut = 9010,
 		StripeAPIError = 9020,
@@ -137,27 +169,36 @@ namespace StripeTerminal
 		SessionExpired = 9060
 	}
 
-	public enum SCPPaymentIntentStatus
-	{
-		RequiresPaymentMethod,
-		RequiresConfirmation,
-		RequiresCapture,
-		Canceled,
-		Succeeded
-	}
-
-	public enum SCPPaymentMethodType
+	[Native]
+	public enum SCPPaymentMethodType : ulong
 	{
 		Card,
 		CardPresent,
 		Unknown
 	}
 
-	public enum SCPUpdateTimeEstimate
+	[Native]
+	public enum SCPReaderNetworkStatus : ulong
+	{
+		ffline,
+		nline
+	}
+
+	[Native]
+	public enum SCPUpdateTimeEstimate : ulong
 	{
 		LessThan1Minute,
 		SCPUpdateTimeEstimate1To2Minutes,
 		SCPUpdateTimeEstimate2To5Minutes,
 		SCPUpdateTimeEstimate5To15Minutes
+	}
+
+	[Native]
+	public enum SCPRefundStatus : ulong
+	{
+		Succeeded,
+		Pending,
+		Failed,
+		Unknown
 	}
 }

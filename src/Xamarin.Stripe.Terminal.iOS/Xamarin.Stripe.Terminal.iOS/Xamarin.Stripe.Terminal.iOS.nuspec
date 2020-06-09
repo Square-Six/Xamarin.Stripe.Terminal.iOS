@@ -2,15 +2,15 @@
 <package >
   <metadata>
     <id>Xamarin.Stripe.Terminal.iOS</id>
-    <version>1.0.1</version>
+    <version>1.2.0</version>
     <title>Xamarin StripeTerminal iOS</title>
-    <authors>Jamie Smith</authors>
+    <authors>Jamie Smith, Blake Davidson</authors>
     <owners>SquareSix</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/Square-Six/Xamarin.StripeTerminal</projectUrl>
     <description>This is the StripeTerminal SDK bindings for Xamarin.iOS</description>
-    <releaseNotes>This is the initial version.</releaseNotes>
+    <releaseNotes>https://github.com/stripe/stripe-terminal-ios/releases</releaseNotes>
     <copyright>Copyright 2020</copyright>
     <tags>stripe-terminal iOS</tags>
   </metadata>

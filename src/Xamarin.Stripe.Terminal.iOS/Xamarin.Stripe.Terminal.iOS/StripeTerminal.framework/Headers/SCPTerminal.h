@@ -19,15 +19,17 @@
 #import "SCPReaderEvent.h"
 #import "SCPDiscoveryMethod.h"
 #import "SCPLogLevel.h"
+#import "SCPRefundParameters.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
  The current version of this library.
  */
-static NSString *const SCPSDKVersion = @"1.0.3";
+static NSString *const SCPSDKVersion = @"1.2.0";
 
 @class SCPCancelable,
+SCPConnectionConfiguration,
 SCPDiscoveryConfiguration,
 SCPPaymentIntentParameters,
 SCPReadReusableCardParameters,
@@ -92,7 +94,7 @@ NS_SWIFT_NAME(Terminal)
 @property (class, nonatomic, readonly) SCPTerminal *shared;
 
 /**
- The terminal's delegate (optional).
+ The Terminal instance's delegate (optional).
  
  Set this to handle events from the Terminal instance.
  */
@@ -104,7 +106,7 @@ NS_SWIFT_NAME(Terminal)
 @property (nonatomic, nullable, readonly) SCPReader *connectedReader;
 
 /**
- The terminal's current connection status.
+ The Terminal instance's current connection status.
  */
 @property (nonatomic, readonly) SCPConnectionStatus connectionStatus;
 
@@ -114,7 +116,7 @@ NS_SWIFT_NAME(Terminal)
 @property (nonatomic, assign, readwrite) SCPLogLevel logLevel;
 
 /**
- The terminal's current payment status.
+ The Terminal instance's current payment status.
  */
 @property (nonatomic, readonly) SCPPaymentStatus paymentStatus;
 
@@ -167,29 +169,46 @@ NS_SWIFT_NAME(Terminal)
                                  completion:(SCPErrorCompletionBlock)completion NS_SWIFT_NAME(discoverReaders(_:delegate:completion:));
 
 /**
- Attempts to connect to the given reader.
-
+ Attempts to connect to the given reader with a given connection configuration.
+ 
  If the connect succeeds, the completion block will be called with the
- connected reader, and the terminal's `connectionStatus` will change to
- `.connected`.
-
+ connected reader, and `SCPTerminal.connectionStatus` will change to `.connected`.
+ 
  If the connect fails, the completion block will be called with an error.
-
- The terminal must be actively discovering readers in order to connect to one.
+ 
+ The SDK must be actively discovering readers in order to connect to one.
  The discovery process will stop if this connection request succeeds, otherwise
- the terminal will continue discovering.
-
- Under the hood, the SDK uses the `fetchConnectionToken` method you defined
- to fetch a connection token if it does not already have one. It then uses the
- connection token and reader information to create a reader session.
+ the SDK will continue discovering.
+ 
+ When this method is called, the SDK uses a connection token and the given
+ reader information to create a reader session. If the SDK does not already
+ have a connection token, it will call the `fetchConnectionToken method you
+ defined to fetch one.
+ 
+ Currently the `connectionConfig` is only utilized by `verifoneP400` and will
+ be ignored if passed while attempting to connect to a `chipper2X`. If
+ `connectionConfig` is set to `nil`, the SDK will resort to default connection
+ behavior; see the `SCPConnectionConfiguration` header documentation for more
+ details.
 
  @see https://stripe.com/docs/terminal/readers/connecting
 
  @param reader          The reader to connect to. This should be a reader
  recently returned to the `didUpdateDiscoveredReaders:` method.
+ @param connectionConfig   The connection configuration for options while
+ connecting to a reader. See `SCPConnectionConfiguration` for more details.
  @param completion      The completion block called when the command completes.
  */
-- (void)connectReader:(SCPReader *)reader completion:(SCPReaderCompletionBlock)completion NS_SWIFT_NAME(connectReader(_:completion:));
+- (void)connectReader:(SCPReader *)reader
+     connectionConfig:(nullable SCPConnectionConfiguration *) connectionConfig
+           completion:(SCPReaderCompletionBlock)completion NS_SWIFT_NAME(connectReader(_:connectionConfig:completion:));
+
+/**
+ Convenience method for connecting to a reader without connection configuration.
+ Please see above docs for functionality.
+ */
+- (void)connectReader:(SCPReader *)reader
+           completion:(SCPReaderCompletionBlock)completion NS_SWIFT_NAME(connectReader(_:completion:));
 
 /**
  Attempts to disconnect from the currently connected reader.
@@ -209,6 +228,9 @@ NS_SWIFT_NAME(Terminal)
  Note: If the information required to create a PaymentIntent isn't readily
  available in your app, you can create the PaymentIntent on your server and use
  the `retrievePaymentIntent` method to retrieve the PaymentIntent in your app.
+
+ @note This cannot be used with the Verifone P400 reader. This method will assert
+ if called while the SDK is connected to a device of type `verifoneP400`.
 
  @see https://stripe.com/docs/terminal/payments#create
 
@@ -316,6 +338,9 @@ NS_SWIFT_NAME(Terminal)
  updated PaymentIntent object with status Canceled. If the cancel request
  fails, the completion block will be called with an error.
 
+ @note This cannot be used with the Verifone P400 reader. This method will assert
+ if called while the SDK is connected to a device of type `verifoneP400`.
+
  @see https://stripe.com/docs/terminal/payments/refunds
  
  @param paymentIntent     The PaymentIntent to cancel.
@@ -348,6 +373,9 @@ NS_SWIFT_NAME(Terminal)
  you can use the fingerprint to look up charges created using the same
  card.
 
+ @note This cannot be used with the Verifone P400 reader. This method will assert
+ if called while the SDK is connected to a device of type `verifoneP400`.
+
  @see https://stripe.com/docs/terminal/online-payments
 
  @param parameters  The parameters for reading the card.
@@ -357,6 +385,72 @@ NS_SWIFT_NAME(Terminal)
 - (nullable SCPCancelable *)readReusableCard:(SCPReadReusableCardParameters *)parameters
                                     delegate:(id<SCPReaderDisplayDelegate>)delegate
                                   completion:(SCPPaymentMethodCompletionBlock)completion NS_SWIFT_NAME(readReusableCard(_:delegate:completion:));
+
+/**
+ Initiates an in-person refund with a given set of `SCPRefundParameters` by
+ collecting the payment method that is to be refunded.
+ 
+ Some payment methods, like Interac Debit payments, require that in-person payments
+ also be refunded while the cardholder is present. The cardholder must present
+ the Interac card to the card reader; these payments cannot be refunded via the
+ dashboard or the API.
+
+ For payment methods that don't require the cardholder be present, see
+ https://stripe.com/docs/terminal/payments/refunds
+ 
+ This method, along with `processRefund`, allow you to design an in-person refund
+ flow into your app.
+ 
+ If collecting a payment method fails, the completion block will be called with
+ an error. After resolving the error, you may call `collectRefundPaymentMethod`
+ again to either try the same card again, or try a different card.
+
+ If collecting a payment method succeeds, the completion block will be called
+ with an `nil` error. At that point, you can call `processRefund` to finish
+ refunding the payment method.
+ 
+ Calling any other SDK methods between `collectRefundPaymentMethod` and
+ `processRefund` will result in undefined behavior.
+
+ Note that if `collectRefundPaymentMethod` is canceled, the completion block
+ will be called with a `Canceled` error.
+ 
+ @see https://stripe.com/docs/terminal/canada#interac-refunds
+ 
+ @param refundParams  The SCPRefundParameters object that describes how the
+ refund will be created.
+ @param completion  The completion block called when the command completes.
+ */
+- (nullable SCPCancelable *)collectRefundPaymentMethod:(SCPRefundParameters *)refundParams
+                                            completion:(SCPErrorCompletionBlock)completion
+    NS_SWIFT_NAME(collectRefundPaymentMethod(_:completion:));
+
+/**
+ Processes an in-person refund after the refund payment method has been collected.
+ 
+ The completion block will either be called with the successful `SCPRefund` or
+ with an `SCPProcessRefundError`.
+
+ When `processRefund` fails, the SDK returns an error that either includes the
+ failed `SCPRefund` or the `SCPRefundParameters` that led to a failure.
+ Your app should inspect the `SCPProcessRefundError` to decide how to proceed.
+
+ 1. If the refund property is `nil`, the request to Stripe's servers timed
+ out and the refund's status is unknown. We recommend that you retry
+ `processRefund` with the original `SCPRefundParameters`.
+
+ 2. If the `SCPProcessRefundError` has a `failure_reason`, the refund was declined.
+ We recommend that you take action based on the decline code you received.
+ 
+ @note `collectRefundPaymentMethod:completion` and `processRefund` are only
+ available for payment methods that require in-person refunds. For all other
+ refunds, use the Stripe Dashboard or the Stripe API.
+ 
+ @see https://stripe.com/docs/terminal/canada#interac-refunds
+ 
+ @param completion  The completion block called when the command completes.
+ */
+- (void)processRefund:(SCPProcessRefundCompletionBlock)completion NS_SWIFT_NAME(processRefund(completion:));
 
 /**
  Checks for a reader software update, and returns an update object if an update
@@ -370,6 +464,9 @@ NS_SWIFT_NAME(Terminal)
  If an error occurs while checking for an update, the completion block will be
  called with an error. If there are no updates available and no errors occur,
  the completion block will be called with `(nil, nil)`.
+ 
+ @note This method will never return an update if it is called when the SDK is
+ connected to the Verifone P400.
 
  @see https://stripe.com/docs/terminal/readers/bbpos-chipper2xbt#software-updates-and-releases
 
@@ -393,6 +490,9 @@ NS_SWIFT_NAME(Terminal)
  You must implement the ability to update your reader's software in your app.
  Though we expect required software updates to be very rare, by using Stripe
  Terminal, you are obligated to include this functionality.
+ 
+ @note It is an error to call this method when the SDK is connected to the Verifone
+ P400 reader.
 
  @see https://stripe.com/docs/terminal/readers/bbpos-chipper2xbt#software-updates-and-releases
 
@@ -452,7 +552,7 @@ NS_SWIFT_NAME(Terminal)
 /**
  Use `initWithConfiguration:tokenProvider:delegate:`
  */
-- (instancetype)new NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
 
 @end
 

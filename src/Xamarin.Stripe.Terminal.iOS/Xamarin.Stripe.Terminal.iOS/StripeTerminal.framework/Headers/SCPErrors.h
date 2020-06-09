@@ -66,6 +66,11 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError) {
      */
     SCPErrorNilPaymentIntent = 1540,
     /**
+     `processRefund` was called without calling `collectRefundPaymentMethod`
+     beforehand.
+     */
+    SCPErrorNilRefundPaymentMethod = 1550,
+    /**
      A PaymentIntent was referenced using an invalid client secret.
      */
     SCPErrorInvalidClientSecret = 1560,
@@ -83,9 +88,15 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError) {
      */
     SCPErrorCannotConnectToUndiscoveredReader = 1580,
     /**
-     `discoverReaders` was called using an invalid `SCPDiscoveryConfiguration`.
-     Your app selected a discovery method that is incompatible with the selected
-     device type.
+     `discoverReaders` was called using an invalid SCPDiscoveryConfiguration.
+     Your app selected a discovery method that is either incompatible with the
+     selected device type or attemped to use `simulated` or `locationId` with a
+     reader which does not support `simulated` or `locationId`. Currently
+     `chipper2X` is the only reader which supports `simulated` and
+     `verifoneP400` is the only reader which supports use of `locationId` for
+     location filtering.
+
+     @see `SCPDiscoveryConfiguration` for valid configurations.
      */
     SCPErrorInvalidDiscoveryConfiguration = 1590,
     /**
@@ -125,7 +136,11 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError) {
      */
     SCPErrorLocationServicesDisabled = 2200,
     /**
-     Bluetooth disabled on this iOS device. Enable bluetooth in Settings.
+     This error indicates that Bluetooth is turned off, and the user should use
+     Settings to turn Bluetooth on.
+
+     If Bluetooth is on but the app does not have permission to use it,
+     a different error (`SCPErrorBluetoothError`) occurs.
      */
     SCPErrorBluetoothDisabled = 2320,
     /**
@@ -199,6 +214,9 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError) {
     SCPErrorReaderCommunicationError = 3060,
     /**
      Generic bluetooth error.
+
+     Among other things, it may indicate that the app does not have permission
+     to use Bluetooth (iOS 13+).
      */
     SCPErrorBluetoothError = 3200,
     /**
@@ -236,6 +254,36 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError) {
      @see https://stripe.com/docs/terminal/readers/bbpos-chipper2xbt#updating-reader-software
      */
     SCPErrorUnsupportedReaderVersion = 3850,
+    
+    /**
+     The reader returned from discovery does not have an IP address and cannot
+     be connected to. The IP address should have been set by the SDK during
+     registration of the reader. Try registering the reader again.
+
+     @see https://stripe.com/docs/terminal/readers/connecting/verifone-p400#register-reader
+     */
+    SCPErrorUnknownReaderIpAddress = 3860,
+
+    /**
+     Connecting to reader over the internet timed out. Make sure your device and
+     reader are on the same Wifi network and your reader is connected to the
+     Wifi network.
+     
+     @see https://stripe.com/docs/terminal/readers/verifone-p400#troubleshooting
+     */
+    SCPErrorInternetConnectTimeOut = 3870,
+
+    /**
+     Connecting to the reader failed because it is currently in use
+     and `SCPConnectionConfiguration.failIfInUse` was set to `true`.
+
+     Try to connect again with `failIfInUse = false`, or choose a different
+     reader.
+
+     A reader is in use while it's collecting a payment.
+     @see https://stripe.com/docs/terminal/readers/connecting/verifone-p400#connect-reader-ios
+     */
+    SCPErrorConnectFailedReaderIsInUse = 3880,
 
     /*
      UNEXPECTED ERRORS
@@ -260,6 +308,11 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError) {
      The reader declined the payment. Try another card.
      */
     SCPErrorPaymentDeclinedByReader = 6500,
+    /**
+     The refund failed. The customer’s bank or card issuer was unable to process
+     it correctly (e.g., a closed bank account or a problem with the card)
+     */
+    SCPErrorRefundFailed = 6800,
 
     /*
      NETWORK ERRORS
@@ -307,9 +360,12 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError) {
 
      * `-[SCPTerminal createPaymentIntent:completion:]`
      * `-[SCPTerminal retrievePaymentIntent:completion:]`
+     * `-[SCPTerminal collectPaymentMethod:delegate:completion:]` if connected to a `SCPDeviceTypeVerifoneP400`
      * `-[SCPTerminal processPayment:completion:]`
      * `-[SCPTerminal cancelPaymentIntent:completion:]`
      * `-[SCPTerminal readReusableCard:delegate:completion:]`
+     * `-[SCPTerminal collectRefundMethod:parameters]`
+     * `-[SCPTerminal processRefund:completion]`
 
      */
     SCPErrorSessionExpired = 9060,
@@ -337,6 +393,12 @@ FOUNDATION_EXPORT SCPErrorKey SCPErrorKeyMessage;
  @see https://stripe.com/docs/api#errors-decline_code
  */
 FOUNDATION_EXPORT SCPErrorKey SCPErrorKeyStripeAPIDeclineCode;
+
+/**
+ If a refund fails, the reason for refund failure if known. Possible values
+ are `lost_or_stolen_card`, `expired_or_canceled_card`, or `unknown`.
+ */
+FOUNDATION_EXPORT SCPErrorKey SCPErrorKeyStripeAPIFailureReason;
 
 /**
  If a Stripe API request failed, the failed request's id will be returned in the
