@@ -45,7 +45,8 @@ namespace StripeTerminal
 	{
 		Chipper2X,
 		VerifoneP400,
-		WisePad3
+		WisePad3,
+		WisePosE
 	}
 
 	[Native]
@@ -57,22 +58,19 @@ namespace StripeTerminal
 	}
 
 	[Native]
+	public enum SCPLogLevel : ulong
+	{
+		None,
+		Verbose
+	}
+
+	[Native]
 	public enum SCPPaymentStatus : ulong
 	{
 		NotReady,
 		Ready,
 		WaitingForInput,
 		Processing
-	}
-
-	[Flags]
-	[Native]
-	public enum SCPReaderInputOptions : ulong
-	{
-		None = 0x0,
-		SwipeCard = 1uL << 0,
-		InsertCard = 1uL << 1,
-		TapCard = 1uL << 2
 	}
 
 	[Native]
@@ -88,18 +86,21 @@ namespace StripeTerminal
 		TryAnotherCard
 	}
 
+	[Flags]
+	[Native]
+	public enum SCPReaderInputOptions : ulong
+	{
+		None = 0x0,
+		SwipeCard = 1uL << 0,
+		InsertCard = 1uL << 1,
+		TapCard = 1uL << 2
+	}
+
 	[Native]
 	public enum SCPReaderEvent : ulong
 	{
 		Inserted,
 		Removed
-	}
-
-	[Native]
-	public enum SCPLogLevel : ulong
-	{
-		None,
-		Verbose
 	}
 
 	[Native]
@@ -124,13 +125,16 @@ namespace StripeTerminal
 		ProcessInvalidPaymentIntent = 1530,
 		NilPaymentIntent = 1540,
 		NilRefundPaymentMethod = 1550,
+		InvalidRefundParameters = 1555,
 		InvalidClientSecret = 1560,
 		MustBeDiscoveringToConnect = 1570,
 		CannotConnectToUndiscoveredReader = 1580,
 		InvalidDiscoveryConfiguration = 1590,
+		InvalidCart = 1600,
 		NilReaderDisplayDelegate = 1850,
 		NilUpdate = 1860,
 		UnsupportedSDK = 1870,
+		FeatureNotAvailableWithConnectedReader = 1880,
 		Canceled = 2020,
 		LocationServicesDisabled = 2200,
 		BluetoothDisabled = 2320,

@@ -17,14 +17,14 @@ NS_ASSUME_NONNULL_BEGIN
  The error domain for all errors originating from the Stripe Terminal SDK.
  */
 NS_SWIFT_NAME(ErrorDomain)
-FOUNDATION_EXPORT NSString * const SCPErrorDomain;
+FOUNDATION_EXPORT NSString *const SCPErrorDomain;
 
 #pragma mark - SCPError
 
 /**
  Possible error codes for NSError objects under the SCPErrorDomain domain.
  */
-typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError) {
+typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError){
 
     /*
      INTEGRATION ERRORS
@@ -71,6 +71,12 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError) {
      */
     SCPErrorNilRefundPaymentMethod = 1550,
     /**
+     The RefundParameters object has invalid values. The Charge ID (ch_123abc)
+     can be found on the `PaymentIntent` object, which you should get from
+     your backend.
+     */
+    SCPErrorInvalidRefundParameters = 1555,
+    /**
      A PaymentIntent was referenced using an invalid client secret.
      */
     SCPErrorInvalidClientSecret = 1560,
@@ -100,6 +106,10 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError) {
      */
     SCPErrorInvalidDiscoveryConfiguration = 1590,
     /**
+     No longer used
+     */
+    SCPErrorInvalidCart = 1600,
+    /**
      `collectPaymentMethod` was called with a `nil` `SCPReaderDisplayDelegate`, but
      the `SCPTerminal.connectedReader` does not have a built-in display, and requires that
      your app support displaying messages from the reader to your user.
@@ -118,6 +128,10 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError) {
      @see https://github.com/stripe/stripe-terminal-ios/releases/latest
      */
     SCPErrorUnsupportedSDK = 1870,
+    /**
+     This feature is currently not available for the selected reader.
+     */
+    SCPErrorFeatureNotAvailableWithConnectedReader = 1880,
 
     /*
      USER ERRORS
@@ -187,9 +201,7 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError) {
      Your terminal delegate will receive `-[SCPTerminalDelegate terminal:didReportReaderEvent:info:]`
      with `SCPReaderEventCardRemoved` when the card is removed.
 
-     Additionally, with configuration `SZZZ_Generic_v37`, the Chipper will
-     beep until the card is removed.
-     https://stripe.com/docs/terminal/readers/bbpos-chipper2xbt#bbpos-chipper-2x-bt-software-releases
+     The Chipper 2x and WisePad 3 will beep until the card is removed.
      */
     SCPErrorCardLeftInReader = 2850,
 
@@ -252,9 +264,10 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError) {
      `-[SCPTerminal installUpdate:delegate:completion:]`.
 
      @see https://stripe.com/docs/terminal/readers/bbpos-chipper2xbt#updating-reader-software
+     @see https://stripe.com/docs/terminal/readers/bbpos-wisepad3#updating-reader-software
      */
     SCPErrorUnsupportedReaderVersion = 3850,
-    
+
     /**
      The reader returned from discovery does not have an IP address and cannot
      be connected to. The IP address should have been set by the SDK during
@@ -360,7 +373,7 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError) {
 
      * `-[SCPTerminal createPaymentIntent:completion:]`
      * `-[SCPTerminal retrievePaymentIntent:completion:]`
-     * `-[SCPTerminal collectPaymentMethod:delegate:completion:]` if connected to a `SCPDeviceTypeVerifoneP400`
+     * `-[SCPTerminal collectPaymentMethod:delegate:completion:]` if connected to a Verifone P400 or a BBPOS WisePOS E
      * `-[SCPTerminal processPayment:completion:]`
      * `-[SCPTerminal cancelPaymentIntent:completion:]`
      * `-[SCPTerminal readReusableCard:delegate:completion:]`
@@ -369,7 +382,7 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError) {
 
      */
     SCPErrorSessionExpired = 9060,
-    
+
 } NS_SWIFT_NAME(ErrorCode);
 
 #pragma mark - UserInfo keys
