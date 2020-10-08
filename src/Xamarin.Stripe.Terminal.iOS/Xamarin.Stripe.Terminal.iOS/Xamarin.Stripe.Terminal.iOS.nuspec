@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Xamarin.Stripe.Terminal.iOS</id>
-    <version>1.2.0</version>
+    <version>1.4.0</version>
     <title>Xamarin StripeTerminal iOS</title>
     <authors>Jamie Smith, Blake Davidson</authors>
     <owners>SquareSix</owners>
