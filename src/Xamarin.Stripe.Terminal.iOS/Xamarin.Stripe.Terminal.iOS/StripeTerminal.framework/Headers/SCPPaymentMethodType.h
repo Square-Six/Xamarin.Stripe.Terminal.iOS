@@ -30,9 +30,14 @@ typedef NS_ENUM(NSUInteger, SCPPaymentMethodType) {
     SCPPaymentMethodTypeCardPresent,
 
     /**
+     An Interac Present payment method.
+     */
+    SCPPaymentMethodTypeInteracPresent,
+
+    /**
      An unknown type.
      */
     SCPPaymentMethodTypeUnknown,
-};
+} NS_SWIFT_NAME(PaymentMethodType);
 
 NS_ASSUME_NONNULL_END

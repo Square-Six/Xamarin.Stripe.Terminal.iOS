@@ -8,11 +8,12 @@
 //  Use of this SDK is subject to the Stripe Terminal Terms:
 //  https://stripe.com/terminal/legal
 //
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- The possible events from a connected reader.
+ The possible events from a connected reader. Used by `[SCPBluetoothReaderDelegate reader:didReportReaderEvent:info:]`.
  */
 typedef NS_ENUM(NSUInteger, SCPReaderEvent) {
     /**

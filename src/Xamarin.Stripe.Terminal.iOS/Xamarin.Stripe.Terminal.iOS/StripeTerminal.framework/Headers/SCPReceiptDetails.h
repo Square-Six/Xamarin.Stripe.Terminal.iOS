@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SCPJSONDecodable.h"
+#import <StripeTerminal/SCPJSONDecodable.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

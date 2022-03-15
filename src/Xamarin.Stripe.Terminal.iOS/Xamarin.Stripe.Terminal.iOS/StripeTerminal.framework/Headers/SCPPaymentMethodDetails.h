@@ -11,8 +11,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SCPJSONDecodable.h"
-#import "SCPPaymentMethodType.h"
+#import <StripeTerminal/SCPJSONDecodable.h>
+#import <StripeTerminal/SCPPaymentMethodType.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
  Unlike an SCPPaymentMethod, the details object does not have a `stripeId`,
  and only exists as a sub-object of another Stripe object.
  */
+NS_SWIFT_NAME(PaymentMethodDetails)
 @interface SCPPaymentMethodDetails : NSObject <SCPJSONDecodable>
 
 /**
@@ -42,6 +43,12 @@ NS_ASSUME_NONNULL_BEGIN
  this contains additional information.
  */
 @property (nonatomic, nullable, readonly) SCPCardPresentDetails *cardPresent;
+
+/**
+ If this is a card present payment method (ie `self.type == SCPPaymentMethodTypeInteracPresent`),
+ this contains additional information.
+ */
+@property (nonatomic, nullable, readonly) SCPCardPresentDetails *interacPresent;
 
 /**
  You cannot directly instantiate this class.

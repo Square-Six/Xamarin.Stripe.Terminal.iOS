@@ -11,8 +11,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SCPJSONDecodable.h"
-#import "SCPPaymentMethodType.h"
+#import <StripeTerminal/SCPJSONDecodable.h>
+#import <StripeTerminal/SCPPaymentMethodType.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -66,6 +66,11 @@ NS_SWIFT_NAME(PaymentMethod)
  You cannot directly instantiate this class.
  */
 - (instancetype)init NS_UNAVAILABLE;
+
+/**
+ You cannot directly instantiate this class.
+ */
++ (instancetype)new NS_UNAVAILABLE;
 
 @end
 

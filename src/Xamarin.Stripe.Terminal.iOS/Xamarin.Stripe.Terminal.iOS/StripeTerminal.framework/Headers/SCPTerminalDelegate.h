@@ -11,14 +11,15 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SCPBlocks.h"
-#import "SCPReaderEvent.h"
-#import "SCPTerminal.h"
+#import <StripeTerminal/SCPBlocks.h>
+#import <StripeTerminal/SCPReaderEvent.h>
+#import <StripeTerminal/SCPTerminal.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- Implement this protocol to handle updates from the Stripe Terminal iOS SDK.
+ Implement this protocol to handle connection and payment updates from the
+ Stripe Terminal iOS SDK.
  */
 NS_SWIFT_NAME(TerminalDelegate)
 @protocol SCPTerminalDelegate <NSObject>
@@ -42,28 +43,6 @@ NS_SWIFT_NAME(TerminalDelegate)
 - (void)terminal:(SCPTerminal *)terminal didReportUnexpectedReaderDisconnect:(SCPReader *)reader NS_SWIFT_NAME(terminal(_:didReportUnexpectedReaderDisconnect:));
 
 @optional
-/**
- The SDK reported an event from the reader (e.g. a card was inserted).
- 
- @note The Verifone P400 has a built-in display which handles displaying card and
- payment events to the customer. The SDK will not call this method while
- connected to the Verifone P400.
-
- @param terminal    The originating terminal.
- @param event       The reader event.
- @param info        Additional info associated with the event, or nil.
- */
-- (void)terminal:(SCPTerminal *)terminal didReportReaderEvent:(SCPReaderEvent)event info:(nullable NSDictionary *)info NS_SWIFT_NAME(terminal(_:didReportReaderEvent:info:));
-
-/**
- This method is called when the SDK's currently connected reader has a low battery.
- 
- @note The Verifone P400 is powered by an outlet, and does not use battery power.
- The SDK will not call this method while connected to the Verifone P400.
-
- @param terminal    The originating terminal.
- */
-- (void)terminalDidReportLowBatteryWarning:(SCPTerminal *)terminal NS_SWIFT_NAME(terminalDidReportLowBatteryWarning(_:));
 
 /**
  The currently connected reader's `connectionStatus` changed.

@@ -11,9 +11,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SCPCardBrand.h"
-#import "SCPCardFundingType.h"
-#import "SCPJSONDecodable.h"
+#import <StripeTerminal/SCPCardBrand.h>
+#import <StripeTerminal/SCPCardFundingType.h>
+#import <StripeTerminal/SCPJSONDecodable.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -84,6 +84,21 @@ NS_SWIFT_NAME(CardPresentDetails)
  issuer.
  */
 @property (nonatomic, nullable, readonly) NSString *emvAuthData;
+
+/**
+ Two-letter ISO code representing the country of the card. You could use this
+ attribute to get a sense of the international breakdown of cards you’ve collected.
+
+ Only available for interac_present payments.
+ */
+@property (nonatomic, copy, nullable, readonly) NSString *country;
+
+/**
+ EMV tag 5F2D. Preferred languages specified by the integrated circuit chip.
+
+ Only available for interac_present payments.
+ */
+@property (nonatomic, copy, nullable, readonly) NSArray<NSString *> *preferredLocales;
 
 /**
  You cannot directly instantiate this class.

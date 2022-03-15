@@ -8,6 +8,7 @@
 //  Use of this SDK is subject to the Stripe Terminal Terms:
 //  https://stripe.com/terminal/legal
 //
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -11,9 +11,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SCPCardBrand.h"
-#import "SCPCardFundingType.h"
-#import "SCPJSONDecodable.h"
+#import <StripeTerminal/SCPCardBrand.h>
+#import <StripeTerminal/SCPCardFundingType.h>
+#import <StripeTerminal/SCPJSONDecodable.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

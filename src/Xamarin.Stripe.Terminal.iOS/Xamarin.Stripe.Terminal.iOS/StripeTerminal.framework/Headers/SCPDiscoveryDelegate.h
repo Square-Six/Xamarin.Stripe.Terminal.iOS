@@ -11,8 +11,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SCPBlocks.h"
-#import "SCPTerminal.h"
+#import <StripeTerminal/SCPBlocks.h>
+#import <StripeTerminal/SCPTerminal.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -58,13 +58,11 @@ NS_SWIFT_NAME(DiscoveryDelegate)
  -------------------
 
  When discovering a reader using this method, this `didUpdateDiscoveredReaders`
- delegate method will be called twice. It will be called for the first time
- when the reader is initially discovered. The reader's LEDs will begin
- flashing. After a short delay, `didUpdateDiscoveredReaders` will be called
- a second time with an updated reader object, populated with additional
- info about the device, like its battery level.
+ delegate method will be called once. The reader's LEDs will begin
+ flashing.
 
- == Internet ==
+ Internet
+ --------
 
  When discovering a reader using this method, the `didUpdateDiscoveredReaders`
  delegate method will only be called once. Both readers online and offline will

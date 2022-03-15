@@ -11,54 +11,76 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SCPBlocks.h"
-#import "SCPCart.h"
-#import "SCPConnectionStatus.h"
-#import "SCPDeviceType.h"
-#import "SCPDiscoveryMethod.h"
-#import "SCPLogLevel.h"
-#import "SCPPaymentStatus.h"
-#import "SCPReaderDisplayDelegate.h"
-#import "SCPReaderEvent.h"
-#import "SCPRefundParameters.h"
+#import <StripeTerminal/SCPBlocks.h>
+#import <StripeTerminal/SCPBluetoothReaderDelegate.h>
+#import <StripeTerminal/SCPCardBrand.h>
+#import <StripeTerminal/SCPCart.h>
+#import <StripeTerminal/SCPCollectConfiguration.h>
+#import <StripeTerminal/SCPConnectionStatus.h>
+#import <StripeTerminal/SCPDeviceType.h>
+#import <StripeTerminal/SCPDiscoveryMethod.h>
+#import <StripeTerminal/SCPLogLevel.h>
+#import <StripeTerminal/SCPPaymentStatus.h>
+#import <StripeTerminal/SCPReaderEvent.h>
+#import <StripeTerminal/SCPRefundParameters.h>
+#import <StripeTerminal/SCPSimulatorConfiguration.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
  The current version of this library.
  */
-static NSString *const SCPSDKVersion = @"1.4.0";
+static NSString *const SCPSDKVersion = @"2.6.0";
 
 @class SCPCancelable,
-    SCPConnectionConfiguration,
+    SCPBluetoothConnectionConfiguration,
     SCPDiscoveryConfiguration,
+    SCPInternetConnectionConfiguration,
+    SCPListLocationsParameters,
     SCPPaymentIntentParameters,
     SCPReadReusableCardParameters,
     SCPUpdateReaderSoftwareParameters;
 
 @protocol SCPConnectionTokenProvider
-, SCPTerminalDelegate, SCPDiscoveryDelegate, SCPReaderSoftwareUpdateDelegate;
+, SCPTerminalDelegate, SCPDiscoveryDelegate;
 
 /**
- The `SCPTerminal` object that is made available by the Stripe Terminal SDK exposes
- a generic interface for discovering readers, connecting to a reader, and
- creating payments.
+ The `SCPTerminal` singleton object exposes an interface for discovering readers,
+ connecting to a reader, creating payments, and saving card information for later
+ use.
 
- The `SCPTerminal` object is a singleton, and you cannot create multiple
- `SCPTerminal` instances.
+ Before accessing the singleton object using the `shared` property, you must set
+ a ConnectionToken provider: an object that implements the `SCPConnectionTokenProvider`
+ protocol. This object should authenticate with your backend, then fetch the [secret](https://stripe.com/docs/api/terminal/connection_tokens/object#terminal_connection_token_object-secret)
+ from a freshly minted [ConnectionToken](https://stripe.com/docs/api/terminal/connection_tokens).
+
+ The SCPTerminal singleton can only be connected to one reader at a time, and
+ can only perform one operation at a time. As a general rule, make sure the
+ completion handler of one operation has been called before calling another
+ operation from within your app.
+
+ The Stripe Terminal SDK sends updates to your app by using the delegate pattern.
+ You may want multiple views in your app to respond to these delegate calls.
+ We recommend creating a central delegate announcer which broadcasts all delegate
+ calls to views and ViewControllers that register themselves with that announcer.
+ We have an example implementation of a TerminalDelegateAnnouncer as [part of our
+ example application](https://github.com/stripe/stripe-terminal-ios/blob/master/Example/Example/TerminalDelegateAnnouncer.swift).
  */
 NS_SWIFT_NAME(Terminal)
+API_AVAILABLE(ios(10.0))
 @interface SCPTerminal : NSObject
+
+#pragma mark Initializing and accessing the SCPTerminal singleton
 
 /**
  Sets the token provider for the shared (singleton) `SCPTerminal` instance.
- 
+
  You must set a token provider before calling `shared` to initialize the
  Terminal singleton. We recommend calling `setTokenProvider:` in your
  AppDelegate's `application:didFinishLaunchingWithOptions:` method.
  Alternatively, you can wrap your call to `setTokenProvider:` with a
  `dispatch_once` in Objective-C, or use a static constructor in Swift.
- 
+
  Note that you may only set a token provider *before* requesting the shared
  Terminal instance for the first time. In order to switch accounts in your app,
  e.g. to switch between live and test Stripe API keys on your backend, refer
@@ -74,7 +96,7 @@ NS_SWIFT_NAME(Terminal)
 
 /**
  Sets a block to listen for logs from the shared Terminal instance (optional).
- 
+
  You can use this optional method to listen for logs from the Stripe Terminal
  SDK and incorporate them into your own remote logs. Note that these logs
  are subject to change, and provided for informational and debugging purposes
@@ -88,18 +110,26 @@ NS_SWIFT_NAME(Terminal)
 
 /**
  Returns the shared (singleton) Terminal instance.
- 
+
  Before accessing the singleton for the first time, you must first call
- `setTokenProvider:` and `setDelegate:`.
+ `setTokenProvider:`.
  */
 @property (class, nonatomic, readonly) SCPTerminal *shared;
 
 /**
- The Terminal instance's delegate (optional).
- 
- Set this to handle events from the Terminal instance.
+ The Terminal singleton object's primary delegate. This delegate announces
+ connection and payment status updates to your app.
+
+ Setting this property is mandatory before connecting to a Bluetooth reader,
+ like the BBPOS Chipper 2X BT or the BBPOS WisePad 3. Setting this property
+ is optional before connecting to an internet reader, like the Verifone P400.
+
+ A runtime assert will fire if your app attempts to connect to a reader that
+ requires the delegate.
  */
 @property (nonatomic, nullable, readwrite) id<SCPTerminalDelegate> delegate;
+
+#pragma mark Accessing the current state of the singleton
 
 /**
  Information about the connected `SCPReader`, or nil if no reader is connected.
@@ -117,6 +147,16 @@ NS_SWIFT_NAME(Terminal)
 @property (nonatomic, assign, readwrite) SCPLogLevel logLevel;
 
 /**
+ The simulator configuration settings that will be used when connecting to
+ and creating payments with a simulated reader. This object will always exist;
+ to set the configuration settings, set the readwrite properties on
+ `Terminal.shared.simulatorConfiguration`.
+
+ @see SCPSimulatorConfiguration
+ */
+@property (nonatomic, readonly) SCPSimulatorConfiguration *simulatorConfiguration;
+
+/**
  The Terminal instance's current payment status.
  */
 @property (nonatomic, readonly) SCPPaymentStatus paymentStatus;
@@ -125,7 +165,7 @@ NS_SWIFT_NAME(Terminal)
  Clears the current connection token, saved reader sessions, and any other
  cached credentials. You can use this method to switch accounts in your app,
  e.g. to switch between live and test Stripe API keys on your backend.
- 
+
  In order to switch accounts in your app:
  - if a reader is connected, call `disconnectReader:`
  - configure the `tokenProvider` object to return connection tokens for the new account.
@@ -133,7 +173,7 @@ NS_SWIFT_NAME(Terminal)
  - call `clearCachedCredentials`
  - call `discoverReaders` and `connectReader` to connect to a reader. The `connect` call
  will request a new connection token from your backend server via the token provider.
- 
+
  An overview of the lifecycle of a connection token under the hood:
  - When the Terminal singleton is initialized, the SDK attempts to proactively request
  a connection token from your backend server.
@@ -145,18 +185,24 @@ NS_SWIFT_NAME(Terminal)
  */
 - (void)clearCachedCredentials NS_SWIFT_NAME(clearCachedCredentials());
 
+#pragma mark Reader discovery, connection, and updates
+
 /**
- Begins discovering readers matching the given configuration.
+ Begins discovering readers based on the given discovery configuration.
 
  When `discoverReaders` is called, the terminal begins scanning for readers using
  the settings in the given `SCPDiscoveryConfiguration`. You must implement
- `SCPDiscoveryDelegate` to handle displaying discovery results to your user and
- connecting to a selected reader.
+ `SCPDiscoveryDelegate` to get notified of discovered readers and display
+ discovery results to your user.
+
+ You must call `connectBluetoothReader` or `connectInternetReader` while
+ a discovery is taking place. You can only connect to a reader that was
+ returned from the `SCPDiscoveryDelegate`'s `didUpdateDiscoveredReaders` method.
 
  The discovery process will stop on its own when the terminal successfully
  connects to a reader, if the command is canceled, or if a discovery error occurs.
 
- Note that if `discoverReaders` is canceled, the completion block will be called
+ @note If `discoverReaders` is canceled, the completion block will be called
  with `nil` (rather than an `SCPErrorCanceled` error).
 
  @see https://stripe.com/docs/terminal/readers/connecting
@@ -170,67 +216,153 @@ NS_SWIFT_NAME(Terminal)
                                  completion:(SCPErrorCompletionBlock)completion NS_SWIFT_NAME(discoverReaders(_:delegate:completion:));
 
 /**
- Attempts to connect to the given reader with a given connection configuration.
- 
- If the connect succeeds, the completion block will be called with the
+ Attempts to connect to the given Bluetooth reader with a given connection
+ configuration.
+
+ To connect to a Bluetooth reader, your app must register that reader to a
+ [Location](https://stripe.com/docs/api/terminal/locations/object) upon connection.
+ You should create a `SCPBluetoothConnectionConfiguration`
+ at some point before connecting which specifies the location to which this
+ reader belongs.
+
+ Throughout the lifetime of the connection, the reader will communicate
+ with your app via the `SCPBluetoothReaderDelegate` to announce transaction
+ status, battery level, and software update information.
+
+ If the connection succeeds, the completion block will be called with the
  connected reader, and `SCPTerminal.connectionStatus` will change to `.connected`.
- 
- If the connect fails, the completion block will be called with an error.
- 
+
+ If the connection fails, the completion block will be called with an error.
+
  The SDK must be actively discovering readers in order to connect to one.
  The discovery process will stop if this connection request succeeds, otherwise
  the SDK will continue discovering.
- 
+
  When this method is called, the SDK uses a connection token and the given
- reader information to create a reader session. If the SDK does not already
- have a connection token, it will call the `fetchConnectionToken method you
- defined to fetch one.
- 
- Currently the `connectionConfig` is only utilized by `verifoneP400` and will
- be ignored if passed while attempting to connect to a `chipper2X` or
- `wisePad3`. If `connectionConfig` is set to `nil`, the SDK will resort to
- default connection behavior; see the `SCPConnectionConfiguration` header
- documentation for more details.
+ reader information to register the reader to your Stripe account. If the SDK
+ does not already have a connection token, it will call the `fetchConnectionToken`
+ method in your `SCPConnectionTokenProvider` implementation.
+
+ If the reader's battery is critically low the connect call will fail with
+ `SCPErrorBluetoothDisconnected`. Plug your reader in to start charging and
+ try again.
 
  @see https://stripe.com/docs/terminal/readers/connecting
 
  @param reader          The reader to connect to. This should be a reader
- recently returned to the `didUpdateDiscoveredReaders:` method.
+ recently returned to the `didUpdateDiscoveredReaders:` method in the discovery delegate.
+ @param delegate        The delegate used during the lifetime of the connection.
+ See `SCPBluetoothReaderDelegate`.
  @param connectionConfig   The connection configuration for options while
- connecting to a reader. See `SCPConnectionConfiguration` for more details.
+ connecting to a reader. See `SCPBluetoothConnectionConfiguration` for more details.
  @param completion      The completion block called when the command completes.
  */
-- (void)connectReader:(SCPReader *)reader
-     connectionConfig:(nullable SCPConnectionConfiguration *)connectionConfig
-           completion:(SCPReaderCompletionBlock)completion NS_SWIFT_NAME(connectReader(_:connectionConfig:completion:));
+- (void)connectBluetoothReader:(SCPReader *)reader
+                      delegate:(id<SCPBluetoothReaderDelegate>)delegate
+              connectionConfig:(SCPBluetoothConnectionConfiguration *)connectionConfig
+                    completion:(SCPReaderCompletionBlock)completion NS_SWIFT_NAME(connectBluetoothReader(_:delegate:connectionConfig:completion:));
 
 /**
- Convenience method for connecting to a reader without connection configuration.
- Please see above docs for functionality.
+ Attempts to connect to the given Internet reader with a given connection
+ configuration.
+
+ If the connect succeeds, the completion block will be called with the
+ connected reader, and `SCPTerminal.connectionStatus` will change to `.connected`.
+
+ If the connect fails, the completion block will be called with an error.
+
+ The SDK must be actively discovering readers in order to connect to one.
+ The discovery process will stop if this connection request succeeds, otherwise
+ the SDK will continue discovering.
+
+ When this method is called, the SDK uses a connection token and the given
+ reader information to create a reader session. If the SDK does not already
+ have a connection token, it will call the `fetchConnectionToken method you
+ defined to fetch one.
+
+ If `connectionConfig` is set to `nil`, the SDK will resort to
+ default connection behavior; see the `SCPInternetConnectionConfiguration`
+ header documentation for more details.
+
+ @see https://stripe.com/docs/terminal/readers/connecting
+
+ @param reader          The reader to connect to. This should be a reader
+ recently returned to the `didUpdateDiscoveredReaders:` method in the discovery delegate.
+ @param connectionConfig   The connection configuration for options while
+ connecting to a reader. See `SCPInternetConnectionConfiguration` for more details.
+ @param completion      The completion block called when the command completes.
  */
-- (void)connectReader:(SCPReader *)reader
-           completion:(SCPReaderCompletionBlock)completion NS_SWIFT_NAME(connectReader(_:completion:));
+- (void)connectInternetReader:(SCPReader *)reader
+             connectionConfig:(nullable SCPInternetConnectionConfiguration *)connectionConfig
+                   completion:(SCPReaderCompletionBlock)completion NS_SWIFT_NAME(connectInternetReader(_:connectionConfig:completion:));
+
+/**
+ Retrieves a list of `SCPLocation` objects belonging to your merchant. You must specify
+ the ID of one of these locations to register the reader to while connecting to a Bluetooth reader.
+
+ @see https://stripe.com/docs/terminal/readers/fleet-management#bluetooth-readers
+
+ @param parameters The optional parameters to pass to the [List all Locations](https://stripe.com/docs/api/terminal/locations/list) API endpoint. Pass `nil` to use the default parameters.
+ @param completion The completion block called when the command completes.
+ */
+- (void)listLocations:(nullable SCPListLocationsParameters *)parameters
+           completion:(SCPLocationsCompletionBlock)completion NS_SWIFT_NAME(listLocations(parameters:completion:));
+
+/**
+ Installs the available update for the connected reader.
+
+ Stripe Terminal reader updates will either be updated automatically upon connection,
+ or announced as available but not automatically installed. When the Stripe Terminal
+ SDK announces an optional update, you can present that update to your app's user
+ and let them decide when to perform that update. When your user chooses to perform
+ a reader update, call this method to start the installation.
+
+ In your app you should display the progress of the update to the user.
+ You should also instruct the user to wait for the update to complete:
+ "Do not leave this page, and keep the reader in range and powered on until
+ the update is complete." You can set `UIApplication.shared.isIdleTimerDisabled`
+ to true while the update is being installed to prevent the device from automatically
+ locking.
+
+ If an error occurs while installing the update (e.g. because the update was
+ interrupted), the `SCPBluetoothReaderDelegate` will receive
+ `reader:didFinishInstallingUpdate:error:` with the error. If the update
+ completed successfully, the same method will be called with `nil` error.
+
+ You must implement the ability to update your reader's software in your app.
+ Though we expect required software updates to be very rare, by using Stripe
+ Terminal, you are obligated to include this functionality.
+
+ @note It is an error to call this method when the SDK is connected to the Verifone
+ P400 or WisePOS E readers.
+
+ @see https://stripe.com/docs/terminal/readers/bbpos-chipper2xbt#updating-reader-software
+ @see https://stripe.com/docs/terminal/readers/bbpos-wisepad3#updating-reader-software
+ */
+- (void)installAvailableUpdate;
 
 /**
  Attempts to disconnect from the currently connected reader.
- 
+
  If the disconnect succeeds, the completion block is called with `nil`. If the
  disconnect fails, the completion block is called with an error.
 
  @see https://stripe.com/docs/terminal/readers/connecting
- 
+
  @param completion      The completion block called when the command completes.
  */
 - (void)disconnectReader:(SCPErrorCompletionBlock)completion NS_SWIFT_NAME(disconnectReader(_:));
 
+#pragma mark Taking payments
+
 /**
  Creates a new `SCPPaymentIntent` with the given parameters.
- 
+
  Note: If the information required to create a PaymentIntent isn't readily
  available in your app, you can create the PaymentIntent on your server and use
  the `retrievePaymentIntent` method to retrieve the PaymentIntent in your app.
 
-     @note This cannot be used with the Verifone P400 reader.  If used with the
+     @note This cannot be used with the Verifone P400 reader. If used with the
      Verifone P400, the completion handler will be called with
      an SCPErrorFeatureNotAvailableWithConnectedReader error.
 
@@ -244,13 +376,13 @@ NS_SWIFT_NAME(Terminal)
 
 /**
  Retrieves a `SCPPaymentIntent` with a client secret.
- 
+
  If the information required to create a PaymentIntent isn't readily available
  in your app, you can create the PaymentIntent on your server and use this
  method to retrieve the PaymentIntent in your app.
- 
+
  @see https://stripe.com/docs/terminal/payments#create
- 
+
  @param clientSecret    The client secret of the PaymentIntent to be retrieved.
  @param completion      The completion block called when the command completes.
  */
@@ -278,18 +410,25 @@ NS_SWIFT_NAME(Terminal)
  @see https://stripe.com/docs/terminal/payments#collect
 
  @param paymentIntent       The PaymentIntent to collect a payment method for.
-
- @param delegate            Your delegate for handling reader input events.
- Providing an `SCPReaderDisplayDelegate` is required when the connected reader doesn't
- have a built-in display (e.g., the BBPOS Chipper 2X BT). These readers will
- request that your app display messages during the `collectPaymentMethod`
- process (e.g., "Remove card") via this delegate.
-
  @param completion          The completion block called when the command completes.
  */
 - (nullable SCPCancelable *)collectPaymentMethod:(SCPPaymentIntent *)paymentIntent
-                                        delegate:(nullable id<SCPReaderDisplayDelegate>)delegate
-                                      completion:(SCPPaymentIntentCompletionBlock)completion NS_SWIFT_NAME(collectPaymentMethod(_:delegate:completion:));
+                                      completion:(SCPPaymentIntentCompletionBlock)completion NS_SWIFT_NAME(collectPaymentMethod(_:completion:));
+
+/**
+ Collects a payment method for the given `PaymentIntent`, with the specified configuration.
+
+ Note: `collectPaymentMethod` does not apply any changes to the PaymentIntent
+ API object. Updates to the PaymentIntent are local to the SDK, and persisted
+ in-memory.
+
+ @param paymentIntent       The PaymentIntent to collect a payment method for.
+ @param collectConfig   The CollectConfiguration object that contains settings for this call.
+ @param completion          The completion block called when the command completes.
+ */
+- (nullable SCPCancelable *)collectPaymentMethod:(SCPPaymentIntent *)paymentIntent
+                                   collectConfig:(nullable SCPCollectConfiguration *)collectConfig
+                                      completion:(SCPPaymentIntentCompletionBlock)completion;
 
 /**
  Processes a payment after collecting a payment method succeeds.
@@ -335,22 +474,24 @@ NS_SWIFT_NAME(Terminal)
 
 /**
  Cancels an `SCPPaymentIntent`.
- 
+
  If the cancel request succeeds, the completion block will be called with the
  updated PaymentIntent object with status Canceled. If the cancel request
  fails, the completion block will be called with an error.
 
  @note This cannot be used with the Verifone P400 reader.  If used with the
  Verifone P400, the completion handler will be called with
- an SCPErrorFeatureNotAvailableWithConnectedReader error.
+ an `SCPErrorFeatureNotAvailableWithConnectedReader` error.
 
  @see https://stripe.com/docs/terminal/payments/refunds
- 
+
  @param paymentIntent     The PaymentIntent to cancel.
  @param completion        The completion block called when the cancel completes.
  */
 - (void)cancelPaymentIntent:(SCPPaymentIntent *)paymentIntent
                  completion:(SCPPaymentIntentCompletionBlock)completion NS_SWIFT_NAME(cancelPaymentIntent(_:completion:));
+
+#pragma mark Saving payment details for later use
 
 /**
  Reads a card with the given parameters and returns a PaymentMethod.
@@ -376,24 +517,134 @@ NS_SWIFT_NAME(Terminal)
  you can use the fingerprint to look up charges created using the same
  card.
 
- @note This cannot be used with the Verifone P400 or WisePad 3 readers. This
- method will assert if called while the SDK is connected to a device of
- type `verifoneP400` or `wisePad3`.
+ @note This functionality is only available in the US, with either a
+ Chipper 2X BT or Verifone P400 reader.
 
  @see https://stripe.com/docs/terminal/online-payments
 
  @param parameters  The parameters for reading the card.
- @param delegate    Your delegate for handling reader input events.
  @param completion  The completion block called when the command completes.
  */
 - (nullable SCPCancelable *)readReusableCard:(SCPReadReusableCardParameters *)parameters
-                                    delegate:(id<SCPReaderDisplayDelegate>)delegate
-                                  completion:(SCPPaymentMethodCompletionBlock)completion NS_SWIFT_NAME(readReusableCard(_:delegate:completion:));
+                                  completion:(SCPPaymentMethodCompletionBlock)completion NS_SWIFT_NAME(readReusableCard(_:completion:));
+
+/**
+ Creates a new `SCPSetupIntent` with the given parameters.
+
+ @see https://stripe.com/docs/api/setup_intents/create
+
+ @param setupIntentParams   The parameters that control the creation of the SetupIntent
+ @param completion          The compltion block called when the command completes
+ */
+- (void)createSetupIntent:(SCPSetupIntentParameters *)setupIntentParams
+               completion:(SCPSetupIntentCompletionBlock)completion NS_SWIFT_NAME(createSetupIntent(_:completion:));
+
+/**
+ Retrieves an `SCPSetupIntent` with a client secret.
+
+ If you've created a SetupIntent on your backend, you must retrieve it in the
+ Stripe Terminal SDK before calling `collectSetupIntentPaymentMethod`.
+
+ @param clientSecret    The client secret of the SetupIntent to be retrieved
+ @param completion      The completion block called when the command completes.
+ */
+- (void)retrieveSetupIntent:(NSString *)clientSecret
+                 completion:(SCPSetupIntentCompletionBlock)completion NS_SWIFT_NAME(retrieveSetupIntent(clientSecret:completion:));
+
+/**
+ Cancels an `SCPPaymentIntent`.
+
+ If the cancel request succeeds, the completion block will be called with the
+ updated PaymentIntent object with status Canceled. If the cancel request
+ fails, the completion block will be called with an error.
+
+ @see https://stripe.com/docs/api/setup_intents/cancel
+
+ @param intent      The SetupIntent to cancel.
+ @param completion  The completion block called when cancellation completes.
+ */
+- (void)cancelSetupIntent:(SCPSetupIntent *)intent
+               completion:(SCPSetupIntentCompletionBlock)completion NS_SWIFT_NAME(cancelSetupIntent(_:completion:));
+
+/**
+ Collects a payment method for the given `SCPSetupIntent`.
+
+ This method does not update the SetupIntent API object. All updates are local
+ to the SDK and only persisted in memory. You must confirm the SetupIntent to
+ create a PaymentMethod API object and (optionally) attach that PaymentMethod
+ to a customer.
+
+ If collecting a payment method fails, the completion block will be called with
+ an error. After resolving the error, you may call `collectSetupIntentPaymentMethod`
+ again to either try the same card again, or try a different card.
+
+ If collecting a payment method succeeds, the completion block will be called
+ with a SetupIntent with status `.requiresConfirmation`, indicating that you
+ should call `confirmSetupIntent:customerConsentCollected:completion:` to
+ finish the payment.
+
+ Note that if `collectSetupIntentPaymentMethod` is canceled, the completion
+ block will be called with a `Canceled` error.
+
+ Collecting cardholder consent
+ -----------------------------
+
+ Card networks require that you collect consent from the customer before saving
+ and reusing their card information. The SetupIntent confirmation API method
+ normally takes a `mandate_data` hash that lets you specify details about the
+ customer's consent. The Stripe Terminal SDK will fill in the `mandate_data`
+ hash with relevant information, but in order for it to do so, you must specify
+ whether you have gathered consent from the cardholder to collect their payment
+ information in this method's second parameter.
+
+ The payment method will not be collected without the cardholder's consent.
+
+ @param setupIntent     The SetupIntent to which payment method information is attached.
+ @param customerConsentCollected    A boolean that should be set to true if you
+ have successfully collected consent from the cardholder to save their payment information.
+ @param completion      The completion block called when collection completes.
+ */
+- (nullable SCPCancelable *)collectSetupIntentPaymentMethod:(SCPSetupIntent *)setupIntent
+                                   customerConsentCollected:(BOOL)customerConsentCollected
+                                                 completion:(SCPSetupIntentCompletionBlock)completion NS_SWIFT_NAME(collectSetupIntentPaymentMethod(_:customerConsentCollected:completion:));
+
+/**
+ Confirms a SetupIntent after the payment method has been successfully collected.
+
+ Handling failures
+ -----------------
+
+ When `confirmSetupIntent` fails, the SDK returns an error that includes the
+ updated `SCPSetupIntent`. Your app should inspect the updated SetupIntent
+ to decide how to proceed.
+
+ 1. If the updated SetupIntent is `nil`, the request to Stripe's servers timed
+ out and the SetupIntent's status is unknown. We recommend that you retry
+ `confirmSetupIntent` with the original SetupIntent.
+
+ 2. If the updated SetupIntent's status is still `.requiresConfirmation` (e.g.,
+ the request failed because your app is not connected to the internet), you
+ can call `confirmSetupIntent` again with the updated SetupIntent to retry
+ the request.
+
+ 3. If the updated SetupIntent's status is `.requiresAction`, there might be
+ authentication the cardholder must perform offline before the saved
+ PaymentMethod can be used.
+
+ @see https://stripe.com/docs/api/setup_intents/confirm
+
+ @param setupIntent     The SetupIntent to confirm
+ @param completion                  The completion block called when the confirmation completes
+ */
+- (void)confirmSetupIntent:(SCPSetupIntent *)setupIntent
+                completion:(SCPConfirmSetupIntentCompletionBlock)completion NS_SWIFT_NAME(confirmSetupIntent(_:completion:));
+
+#pragma mark Card-present refunds
 
 /**
  Initiates an in-person refund with a given set of `SCPRefundParameters` by
  collecting the payment method that is to be refunded.
- 
+
  Some payment methods, like Interac Debit payments, require that in-person payments
  also be refunded while the cardholder is present. The cardholder must present
  the Interac card to the card reader; these payments cannot be refunded via the
@@ -401,10 +652,10 @@ NS_SWIFT_NAME(Terminal)
 
  For payment methods that don't require the cardholder be present, see
  https://stripe.com/docs/terminal/payments/refunds
- 
+
  This method, along with `processRefund`, allow you to design an in-person refund
  flow into your app.
- 
+
  If collecting a payment method fails, the completion block will be called with
  an error. After resolving the error, you may call `collectRefundPaymentMethod`
  again to either try the same card again, or try a different card.
@@ -412,15 +663,15 @@ NS_SWIFT_NAME(Terminal)
  If collecting a payment method succeeds, the completion block will be called
  with an `nil` error. At that point, you can call `processRefund` to finish
  refunding the payment method.
- 
+
  Calling any other SDK methods between `collectRefundPaymentMethod` and
  `processRefund` will result in undefined behavior.
 
  Note that if `collectRefundPaymentMethod` is canceled, the completion block
  will be called with a `Canceled` error.
- 
+
  @see https://stripe.com/docs/terminal/canada#interac-refunds
- 
+
  @param refundParams  The SCPRefundParameters object that describes how the
  refund will be created.
  @param completion  The completion block called when the command completes.
@@ -431,7 +682,7 @@ NS_SWIFT_NAME(Terminal)
 
 /**
  Processes an in-person refund after the refund payment method has been collected.
- 
+
  The completion block will either be called with the successful `SCPRefund` or
  with an `SCPProcessRefundError`.
 
@@ -445,47 +696,25 @@ NS_SWIFT_NAME(Terminal)
 
  2. If the `SCPProcessRefundError` has a `failure_reason`, the refund was declined.
  We recommend that you take action based on the decline code you received.
- 
+
  @note `collectRefundPaymentMethod:completion` and `processRefund` are only
  available for payment methods that require in-person refunds. For all other
  refunds, use the Stripe Dashboard or the Stripe API.
- 
+
  @see https://stripe.com/docs/terminal/canada#interac-refunds
- 
+
  @param completion  The completion block called when the command completes.
  */
 - (void)processRefund:(SCPProcessRefundCompletionBlock)completion NS_SWIFT_NAME(processRefund(completion:));
 
-/**
- Checks for a reader software update, and returns an update object if an update
- is available.
-
- If an update is available, the completion block will be called with an
- `SCPReaderSoftwareUpdate` object, indicating that a software update is available.
- The update object contains information about the update that you can display
- to the user, such as the estimated installation time.
-
- If an error occurs while checking for an update, the completion block will be
- called with an error. If there are no updates available and no errors occur,
- the completion block will be called with `(nil, nil)`.
- 
- @note This method will never return an update if it is called when the SDK is
- connected to the Verifone P400.
-
- @see https://stripe.com/docs/terminal/readers/bbpos-chipper2xbt#updating-reader-software
- @see https://stripe.com/docs/terminal/readers/bbpos-wisepad3#updating-reader-software
-
- @param completion  The completion block called when checking for an update
- completes.
- */
-- (nullable SCPCancelable *)checkForUpdate:(SCPReaderSoftwareUpdateCompletionBlock)completion NS_SWIFT_NAME(checkForUpdate(_:));
+#pragma mark Displaying information to customers
 
 /**
  Clears the reader display and resets it to the splash screen.
 
  @param completion  The completion block called when the command completes.
 
- @note Only available for the Verifone P400
+ @note Only available for the Verifone P400 and BBPOS WisePOS E.
  */
 - (void)clearReaderDisplay:(SCPErrorCompletionBlock)completion NS_SWIFT_NAME(clearReaderDisplay(_:));
 
@@ -497,45 +726,11 @@ NS_SWIFT_NAME(Terminal)
  @param cart  The cart containing the information that will be displayed.
  @param completion  The completion block called when the command completes.
 
- @note Only available for the Verifone P400
+ @note Only available for the Verifone P400 and BBPOS WisePOS E.
  */
 - (void)setReaderDisplay:(SCPCart *)cart
               completion:(SCPErrorCompletionBlock)completion
     NS_SWIFT_NAME(setReaderDisplay(_:completion:));
-
-/**
- Installs the provided update, and calls the completion block when the
- installation has completed.
-
- If an error occurs while installing the update (e.g. because the update was
- interrupted), the completion block will be called with an error. If the update
- completed successfully, the completion block will be called with `nil`.
- You must pass a delegate to handle events as the update proceeds. In your app,
- you should display the progress of the update to the user. You should also
- instruct the user to wait for the update to complete: "Do not leave this page,
- and keep the reader in range and powered on until the update is complete."
-
- You must implement the ability to update your reader's software in your app.
- Though we expect required software updates to be very rare, by using Stripe
- Terminal, you are obligated to include this functionality.
- 
- @note It is an error to call this method when the SDK is connected to the Verifone
- P400 reader.
-
- @see https://stripe.com/docs/terminal/readers/bbpos-chipper2xbt#updating-reader-software
- @see https://stripe.com/docs/terminal/readers/bbpos-wisepad3#updating-reader-software
-
- @param update  The reader update.
- @param delegate  Your delegate for handling update events.
- @param completion  The completion block called when the update completes.
- */
-// Disable clang-format as it currently breaks up the NS_SWIFT_NAME
-// clang-format off
-- (nullable SCPCancelable *)installUpdate:(SCPReaderSoftwareUpdate *)update
-                                 delegate:(id<SCPReaderSoftwareUpdateDelegate>)delegate
-                               completion:(SCPErrorCompletionBlock)completion
-    NS_SWIFT_NAME(installUpdate(_:delegate:completion:));
-// clang-format on
 
 /**
  Returns an unlocalized string for the given reader input options, e.g.
@@ -576,6 +771,16 @@ NS_SWIFT_NAME(Terminal)
  Returns an unlocalized string for the given discovery method.
  */
 + (NSString *)stringFromDiscoveryMethod:(SCPDiscoveryMethod)method NS_SWIFT_NAME(stringFromDiscoveryMethod(_:));
+
+/**
+ Returns an unlocalized string for the given card brand.
+ */
++ (NSString *)stringFromCardBrand:(SCPCardBrand)cardBrand NS_SWIFT_NAME(stringFromCardBrand(_:));
+
+/**
+ Returns an unlocalized string for the given payment intent status.
+ */
++ (NSString *)stringFromPaymentIntentStatus:(SCPPaymentIntentStatus)paymentIntentStatus NS_SWIFT_NAME(stringFromPaymentIntentStatus(_:));
 
 /**
  Use `initWithConfiguration:tokenProvider:delegate:`

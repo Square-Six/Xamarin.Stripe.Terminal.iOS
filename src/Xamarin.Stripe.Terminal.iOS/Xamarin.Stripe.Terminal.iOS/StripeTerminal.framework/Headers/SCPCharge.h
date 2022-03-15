@@ -9,7 +9,7 @@
 //  https://stripe.com/terminal/legal
 //
 
-#import "SCPJSONDecodable.h"
+#import <StripeTerminal/SCPJSONDecodable.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -38,6 +38,7 @@ typedef NS_ENUM(NSUInteger, SCPChargeStatus) {
 
  @see https://stripe.com/docs/api#charges
  */
+NS_SWIFT_NAME(Charge)
 @interface SCPCharge : NSObject <SCPJSONDecodable>
 
 /**

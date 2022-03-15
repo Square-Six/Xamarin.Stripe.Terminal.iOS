@@ -14,7 +14,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- Parameters for creating an `SCPPaymentIntent`.
+ Parameters for creating an `SCPPaymentIntent`. Pass an object of this type
+ into `Terminal.shared.createPaymentIntent()`.
 
  @see https://stripe.com/docs/api/payment_intents/create
  */
@@ -30,6 +31,12 @@ NS_SWIFT_NAME(PaymentIntentParameters)
  Three-letter ISO currency code, in lowercase. Must be a supported currency.
  */
 @property (nonatomic, readonly) NSString *currency;
+
+/**
+ The list of payment method types that this PaymentIntent is allowed to use.
+ The default is value for this is ["card_present"].
+ */
+@property (nonatomic, readonly) NSArray<NSString *> *paymentMethodTypes;
 
 /**
  Set of key-value pairs that you can attach to an object. This can be useful for
@@ -109,6 +116,23 @@ NS_SWIFT_NAME(PaymentIntentParameters)
 @property (nonatomic, copy, nullable, readwrite) NSString *onBehalfOf;
 
 /**
+ Indicates that you intend to make future payments with this PaymentIntent’s payment method.
+
+ Providing this parameter will attach the payment method to the PaymentIntent’s Customer,
+ after the PaymentIntent is confirmed and any required actions from the user are complete.
+ If no Customer was provided, the payment method can still be attached to a Customer after
+ the transaction completes.
+
+ Possible values:
+ "on_session": Use "on_session" if you intend to only reuse the payment method when your
+ customer is present in your checkout flow.
+ "off_session": Use "off_session" if your customer may or may not be present in your checkout flow.
+
+ @see https://stripe.com/docs/api/payment_intents/create#create_payment_intent-setup_future_usage
+ */
+@property (nonatomic, copy, nullable, readwrite) NSString *setupFutureUsage;
+
+/**
  Initializes SCPPaymentIntentParameters with the given parameters.
 
  @param amount      The amount of the payment, provided in the currency's
@@ -119,9 +143,31 @@ NS_SWIFT_NAME(PaymentIntentParameters)
  feature, see https://stripe.com/docs/terminal/testing#test-card
 
  @param currency    The currency of the payment.
+
+ This initializer will use the default paymentMethodTypes value: ["card_present"]
  */
 - (instancetype)initWithAmount:(NSUInteger)amount
                       currency:(NSString *)currency;
+
+/**
+ Initializes SCPPaymentIntentParameters with the given parameters.
+
+ @note In testmode, only amounts ending in "00" will be approved. All other
+ amounts will be declined by the Stripe API. For more information about this
+ feature, see https://stripe.com/docs/terminal/testing#test-card
+
+ @param amount      The amount of the payment, provided in the currency's
+ smallest unit.
+
+ @param currency    The currency of the payment.
+
+ @param paymentMethodTypes The payment method types allowed for this
+ payment. Currently allowed payment method types for a Terminal transaction are
+ "card_present" and "interac_present".
+ */
+- (instancetype)initWithAmount:(NSUInteger)amount
+                      currency:(NSString *)currency
+            paymentMethodTypes:(NSArray<NSString *> *)paymentMethodTypes;
 
 /**
  Use `initWithAmount:currency:`

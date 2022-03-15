@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SCPErrors.h"
+#import <StripeTerminal/SCPErrors.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  An error from `-[SCPTerminal processRefund:completion:]`.
- 
+
  @see https://stripe.com/docs/terminal/canada#interac-refunds
  */
 NS_SWIFT_NAME(ProcessRefundError)
@@ -29,7 +29,7 @@ NS_SWIFT_NAME(ProcessRefundError)
 /**
  If `processRefund` failed after the refund was created, this property contains
  the failing refund.
- 
+
  @see https://stripe.com/docs/api/refunds/object
  */
 @property (nonatomic, nullable, readonly) SCPRefund *refund;
@@ -39,12 +39,6 @@ NS_SWIFT_NAME(ProcessRefundError)
  this property contains additional details about the error.
 */
 @property (nonatomic, nullable, readonly) NSError *requestError;
-
-/**
- If `processRefund` failed because the payment method was declined, this
- property contains the decline code.
-*/
-@property (nonatomic, nullable, readonly) NSString *failureReason;
 
 /**
  You cannot directly instantiate this class.

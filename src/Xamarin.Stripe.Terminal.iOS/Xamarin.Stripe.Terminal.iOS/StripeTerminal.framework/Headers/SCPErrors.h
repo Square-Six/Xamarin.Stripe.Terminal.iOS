@@ -66,6 +66,11 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError){
      */
     SCPErrorNilPaymentIntent = 1540,
     /**
+     `collectSetupIntentPaymentMethod` or `processSetupIntent` was called with
+     a `nil` SetupIntent.
+     */
+    SCPErrorNilSetupIntent = 1542,
+    /**
      `processRefund` was called without calling `collectRefundPaymentMethod`
      beforehand.
      */
@@ -77,7 +82,7 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError){
      */
     SCPErrorInvalidRefundParameters = 1555,
     /**
-     A PaymentIntent was referenced using an invalid client secret.
+     A PaymentIntent or SetupIntent was referenced using an invalid client secret.
      */
     SCPErrorInvalidClientSecret = 1560,
     /**
@@ -106,19 +111,10 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError){
      */
     SCPErrorInvalidDiscoveryConfiguration = 1590,
     /**
-     No longer used
+     `installUpdate` was passed an update that is for a different reader. Updates can only
+     be installed on the reader that was connected when the update was announced.
      */
-    SCPErrorInvalidCart = 1600,
-    /**
-     `collectPaymentMethod` was called with a `nil` `SCPReaderDisplayDelegate`, but
-     the `SCPTerminal.connectedReader` does not have a built-in display, and requires that
-     your app support displaying messages from the reader to your user.
-     */
-    SCPErrorNilReaderDisplayDelegate = 1850,
-    /**
-     `installUpdate` was passed a `nil` `SCPReaderSoftwareUpdate`.
-     */
-    SCPErrorNilUpdate = 1860,
+    SCPErrorInvalidReaderForUpdate = 1861,
     /**
      `-[SCPTerminal connectReader:completion:]` was called from an unsupported version
      of the SDK. In order to fix this you will need to update your app to the most recent
@@ -132,6 +128,21 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError){
      This feature is currently not available for the selected reader.
      */
     SCPErrorFeatureNotAvailableWithConnectedReader = 1880,
+
+    /**
+     This feature is not currently available.
+     */
+    SCPErrorFeatureNotAvailable = 1890,
+
+    /**
+     The ListLocationsParameters object has invalid values.
+     */
+    SCPErrorInvalidListLocationsLimitParameter = 1900,
+
+    /**
+     The locationId parameter to BluetoothConnectionConfiguration is required but a valid one was not provided.
+     */
+    SCPErrorBluetoothConnectionInvalidLocationIdParameter = 1910,
 
     /*
      USER ERRORS
@@ -158,6 +169,11 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError){
      */
     SCPErrorBluetoothDisabled = 2320,
     /**
+     Bluetooth is turned on on the device, but access to Bluetooth has been denied
+     for your app. The user needs to go to Settings > Your App > and enable Bluetooth
+     */
+    SCPErrorBluetoothAccessDenied = 2321,
+    /**
      Scanning for bluetooth devices timed out.
 
      @see `SCPDiscoveryConfiguration.timeout`
@@ -177,6 +193,16 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError){
      Updating the reader software failed because the update was interrupted.
      */
     SCPErrorReaderSoftwareUpdateFailedInterrupted = 2660,
+    /**
+     Updating the reader software failed because the update has expired. Please disconnect and
+     reconnect from the reader to retrieve a new update.
+     */
+    SCPErrorReaderSoftwareUpdateFailedExpiredUpdate = 2670,
+    /**
+     The reader has a critically low battery and cannot connect to the
+     iOS device. Charge the reader before trying again.
+     */
+    SCPErrorBluetoothConnectionFailedBatteryCriticallyLow = 2680,
     /**
      The card is not a chip card.
      */
@@ -216,7 +242,7 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError){
     /**
      An incompatible reader was detected. You can only use the Stripe Terminal
      iOS SDK with one of Stripe's pre-certified readers.
-     
+
      @see https://stripe.com/docs/terminal/readers
      */
     SCPErrorIncompatibleReader = 3030,
@@ -225,7 +251,7 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError){
      */
     SCPErrorReaderCommunicationError = 3060,
     /**
-     Generic bluetooth error.
+     Generic Bluetooth error.
 
      Among other things, it may indicate that the app does not have permission
      to use Bluetooth (iOS 13+).
@@ -242,6 +268,16 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError){
      */
     SCPErrorBluetoothDisconnected = 3230,
     /**
+     Bluetooth pairing error, the reader has removed this device pairing information.
+     Forget the reader in iOS Settings.
+     */
+    SCPErrorBluetoothPeerRemovedPairingInformation = 3240,
+    /**
+     The Bluetooth reader is already paired to another device. The Bluetooth reader
+     must have its pairing reset to connect to this device.
+     */
+    SCPErrorBluetoothAlreadyPairedWithAnotherDevice = 3241,
+    /**
      Generic reader software update error.
      */
     SCPErrorReaderSoftwareUpdateFailed = 3800,
@@ -256,12 +292,10 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError){
      */
     SCPErrorReaderSoftwareUpdateFailedServerError = 3840,
     /**
-     `-[SCPTerminal processPayment:completion:]` was called from a reader with an
-     unsupported reader version. You will need to update your reader to the most
-     recent version in order to accept payments. We suggest you prompt your user
-     update the reader via the update flow that you have implemented using
-     `-[SCPTerminal checkForUpdate:]` and
-     `-[SCPTerminal installUpdate:delegate:completion:]`.
+     `processPayment` was called from a reader with an unsupported reader
+     version. You will need to update your reader to the most recent version in
+     order to accept payments. We suggest you prompt your user
+     to disconnect and reconnect their reader in order to update the reader.
 
      @see https://stripe.com/docs/terminal/readers/bbpos-chipper2xbt#updating-reader-software
      @see https://stripe.com/docs/terminal/readers/bbpos-wisepad3#updating-reader-software
@@ -281,7 +315,7 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError){
      Connecting to reader over the internet timed out. Make sure your device and
      reader are on the same Wifi network and your reader is connected to the
      Wifi network.
-     
+
      @see https://stripe.com/docs/terminal/readers/verifone-p400#troubleshooting
      */
     SCPErrorInternetConnectTimeOut = 3870,
@@ -306,21 +340,29 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError){
      Unexpected SDK error.
      */
     SCPErrorUnexpectedSdkError = 5000,
+    /**
+     Unexpected reader error.
+     */
+    SCPErrorUnexpectedReaderError = 5001,
 
     /*
      PAYMENT ERRORS
      */
 
     /**
-     The Stripe API declined the payment.
-     Inspect `SCPProcessPaymentError.requestError` property for more information about
+     The Stripe API declined the transaction.
+     Inspect the error's `requestError` property for more information about
      the decline, including the decline code.
      */
-    SCPErrorPaymentDeclinedByStripeAPI = 6000,
+    SCPErrorDeclinedByStripeAPI = 6000,
     /**
-     The reader declined the payment. Try another card.
+     The reader declined the transaction. Try another card.
      */
-    SCPErrorPaymentDeclinedByReader = 6500,
+    SCPErrorDeclinedByReader = 6500,
+    /**
+     The cardholder must give consent in order for this operation to succeed.
+     */
+    SCPErrorCommandRequiresCardholderConsent = 6700,
     /**
      The refund failed. The customer’s bank or card issuer was unable to process
      it correctly (e.g., a closed bank account or a problem with the card)
@@ -391,10 +433,9 @@ typedef NS_ERROR_ENUM(SCPErrorDomain, SCPError){
  Use this enum to access `userInfo` keys for `NSError` objects under the
  `SCPErrorDomain` domain.
  */
-NS_SWIFT_NAME(ErrorKey)
-typedef NSString *const SCPErrorKey NS_STRING_ENUM;
+typedef NSString *const SCPErrorKey NS_STRING_ENUM NS_SWIFT_NAME(ErrorKey);
 
-/** 
+/**
  An error message explaining what went wrong. You probably shouldn't show this
  to your users, but may want to use it yourself.
  */

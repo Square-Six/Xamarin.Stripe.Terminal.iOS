@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SCPErrors.h"
+#import <StripeTerminal/SCPErrors.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

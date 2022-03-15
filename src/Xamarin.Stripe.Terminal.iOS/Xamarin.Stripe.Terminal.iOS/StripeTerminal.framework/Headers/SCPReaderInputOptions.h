@@ -14,8 +14,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- This represents all of the input methods available to your user when the
- reader begins waiting for input.
+ This OptionSet represents all of the input methods available to your user when
+ the reader begins waiting for input. Used by `[SCPBluetoothReaderDelegate reader:didRequestReaderInput:]`.
  */
 typedef NS_OPTIONS(NSUInteger, SCPReaderInputOptions) {
     /**

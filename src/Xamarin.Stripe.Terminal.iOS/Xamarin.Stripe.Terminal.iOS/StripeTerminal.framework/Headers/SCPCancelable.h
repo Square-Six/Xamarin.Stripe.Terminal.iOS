@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SCPBlocks.h"
+#import <StripeTerminal/SCPBlocks.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

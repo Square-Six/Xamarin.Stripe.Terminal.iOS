@@ -9,8 +9,8 @@
 //  https://stripe.com/terminal/legal
 //
 
-#import "SCPJSONDecodable.h"
 #import <Foundation/Foundation.h>
+#import <StripeTerminal/SCPJSONDecodable.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -65,7 +65,7 @@ NS_SWIFT_NAME(PaymentIntent)
 /**
  The unique identifier for the intent.
  */
-@property (nonatomic, readonly) NSString *stripeId;
+@property (nonatomic, readonly, copy) NSString *stripeId;
 
 /**
  When the intent was created.
@@ -80,7 +80,7 @@ NS_SWIFT_NAME(PaymentIntent)
 /**
  The amount to be collected by this PaymentIntent, provided in the currency's
  smallest unit.
- 
+
  @see https://stripe.com/docs/currencies#zero-decimal
  */
 @property (nonatomic, readonly) NSUInteger amount;
@@ -103,12 +103,16 @@ NS_SWIFT_NAME(PaymentIntent)
 /**
  You cannot directly instantiate `SCPPaymentIntent`. You should only use
  one that has been returned by our SDK.
+
+ @see SCPTerminal.shared.createPaymentIntent()
  */
 - (instancetype)init NS_UNAVAILABLE;
 
 /**
  You cannot directly instantiate `SCPPaymentIntent`. You should only use
  one that has been returned by our SDK.
+
+ @see SCPTerminal.shared.createPaymentIntent()
  */
 + (instancetype)new NS_UNAVAILABLE;
 

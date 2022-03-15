@@ -8,19 +8,20 @@
 //  Use of this SDK is subject to the Stripe Terminal Terms:
 //  https://stripe.com/terminal/legal
 //
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- The possible device types for a reader.
+ The possible networking statuses for a reader.
 
  @see https://stripe.com/docs/api/terminal/readers/object
  */
 typedef NS_ENUM(NSUInteger, SCPReaderNetworkStatus) {
 
     /**
-     The reader is offline. Note that Chipper 2x and WisePad 3 will default to
-     'offline'.
+     The reader is offline. Note that Chipper 2x and WisePad 3 will always report
+     `offline`.
      */
     SCPReaderNetworkStatusOffline,
 
