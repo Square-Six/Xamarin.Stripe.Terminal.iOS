@@ -143,14 +143,17 @@ namespace StripeTerminal
 		void OnRequestReaderDisplayMessage(Reader reader, SCPReaderDisplayMessage displayMessage);
 
 		// @optional -(void)reader:(SCPReader * _Nonnull)reader didReportReaderEvent:(SCPReaderEvent)event info:(NSDictionary * _Nullable)info __attribute__((swift_name("reader(_:didReportReaderEvent:info:)")));
+		[Abstract]
 		[Export("reader:didReportReaderEvent:info:")]
 		void OnReportReaderEvent(Reader reader, SCPReaderEvent @event, [NullAllowed] NSDictionary info);
 
 		// @optional -(void)reader:(SCPReader * _Nonnull)reader didReportBatteryLevel:(float)batteryLevel status:(SCPBatteryStatus)status isCharging:(BOOL)isCharging __attribute__((swift_name("reader(_:didReportBatteryLevel:status:isCharging:)")));
+		[Abstract]
 		[Export("reader:didReportBatteryLevel:status:isCharging:")]
 		void OnReportBatteryLevel(Reader reader, float batteryLevel, SCPBatteryStatus status, bool isCharging);
 
 		// @optional -(void)readerDidReportLowBatteryWarning:(SCPReader * _Nonnull)reader __attribute__((swift_name("readerDidReportLowBatteryWarning(_:)")));
+		[Abstract]
 		[Export("readerDidReportLowBatteryWarning:")]
 		void OnReportLowBatteryWarning(Reader reader);
 	}
@@ -637,11 +640,11 @@ namespace StripeTerminal
 		// -(SCPCancelable * _Nullable)discoverReaders:(SCPDiscoveryConfiguration * _Nonnull)configuration delegate:(id<SCPDiscoveryDelegate> _Nonnull)delegate completion:(SCPErrorCompletionBlock _Nonnull)completion __attribute__((swift_name("discoverReaders(_:delegate:completion:)")));
 		[Export("discoverReaders:delegate:completion:")]
 		[return: NullAllowed]
-		Cancelable DiscoverReaders(DiscoveryConfiguration configuration, DiscoveryDelegate @delegate, SCPErrorCompletionBlock completion);
+		Cancelable DiscoverReaders(DiscoveryConfiguration configuration, NSObject @delegate, SCPErrorCompletionBlock completion);
 
 		// -(void)connectBluetoothReader:(SCPReader * _Nonnull)reader delegate:(id<SCPBluetoothReaderDelegate> _Nonnull)delegate connectionConfig:(SCPBluetoothConnectionConfiguration * _Nonnull)connectionConfig completion:(SCPReaderCompletionBlock _Nonnull)completion __attribute__((swift_name("connectBluetoothReader(_:delegate:connectionConfig:completion:)")));
-		[Export("connectBluetoothReader:delegate:connectionConfig:completion:")]
-		void ConnectBluetoothReader(Reader reader, BluetoothReaderDelegate @delegate, SCPBluetoothConnectionConfiguration connectionConfig, SCPReaderCompletionBlock completion);
+		[Export("connectBluetoothReader:delegate:connectionConfig:completion:", ArgumentSemantic.Weak)]
+		void ConnectBluetoothReader(Reader reader, NSObject @delegate, SCPBluetoothConnectionConfiguration connectionConfig, SCPReaderCompletionBlock completion);
 
 		// -(void)connectInternetReader:(SCPReader * _Nonnull)reader connectionConfig:(SCPInternetConnectionConfiguration * _Nullable)connectionConfig completion:(SCPReaderCompletionBlock _Nonnull)completion __attribute__((swift_name("connectInternetReader(_:connectionConfig:completion:)")));
 		[Export("connectInternetReader:connectionConfig:completion:")]
@@ -1030,7 +1033,7 @@ namespace StripeTerminal
 
 		// @property (readonly, nonatomic) BOOL simulated;
 		[Export("simulated")]
-		bool Simulated { get; }
+		bool IsSimulated { get; }
 
 		// @property (readonly, nonatomic) NSString * _Nullable stripeId;
 		[NullAllowed, Export("stripeId")]
@@ -1344,10 +1347,12 @@ namespace StripeTerminal
 		void OnUnexpectedReaderDisconnect(Terminal terminal, Reader reader);
 
 		// @optional -(void)terminal:(SCPTerminal * _Nonnull)terminal didChangeConnectionStatus:(SCPConnectionStatus)status __attribute__((swift_name("terminal(_:didChangeConnectionStatus:)")));
+		[Abstract]
 		[Export("terminal:didChangeConnectionStatus:")]
 		void OnConnectionStatusChange(Terminal terminal, SCPConnectionStatus status);
 
 		// @optional -(void)terminal:(SCPTerminal * _Nonnull)terminal didChangePaymentStatus:(SCPPaymentStatus)status __attribute__((swift_name("terminal(_:didChangePaymentStatus:)")));
+		[Abstract]
 		[Export("terminal:didChangePaymentStatus:")]
 		void OnPaymentStatusChange(Terminal terminal, SCPPaymentStatus status);
 	}
