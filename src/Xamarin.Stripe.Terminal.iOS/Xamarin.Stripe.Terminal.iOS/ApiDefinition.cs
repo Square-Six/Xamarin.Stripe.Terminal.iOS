@@ -4,6 +4,20 @@ using Foundation;
 using ObjCRuntime;
 using StripeTerminal;
 
+
+/*
+ * How to Rename Methods and Parameters
+ * 
+ * [Export ("animation:valueForProgress:"), DelegateApiName ("ComputeAnimationCurve"), DelegateName ("Func<NSAnimation, float, float>")]
+ *  float GetValueForProgress (NSAnimation animation, float progress);
+ * 
+ * Produces:
+ * public Func<NSAnimation, float, float> ComputeAnimationCurve { get; set; }
+ * 
+ * This wraps the native method and produces a better result
+ * 
+ */
+
 namespace StripeTerminal
 {
 	[Protocol, Model]
