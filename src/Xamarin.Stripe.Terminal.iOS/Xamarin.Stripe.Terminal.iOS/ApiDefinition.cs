@@ -280,7 +280,7 @@ namespace StripeTerminal
 		IntPtr Constructor(string displayName, nint quantity, nint amount);
 	}
 
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPCart")]
 	[DisableDefaultCtor]
 	interface Cart
 	{
@@ -308,7 +308,7 @@ namespace StripeTerminal
 
 
 	// @interface SCPCharge : NSObject <SCPJSONDecodable>
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPCharge")]
 	[DisableDefaultCtor]
 	interface Charge : JSONDecodable
 	{
@@ -342,7 +342,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPCollectConfiguration : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPCollectConfiguration")]
 	[DisableDefaultCtor]
 	interface CollectConfiguration
 	{
@@ -408,7 +408,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPConfirmSetupIntentError : NSError
-	[BaseType(typeof(NSError))]
+	[BaseType(typeof(NSError), Name = "SCPConfirmSetupIntentError")]
 	[DisableDefaultCtor]
 	interface ConfirmSetupIntentError
 	{
@@ -446,7 +446,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPDiscoveryConfiguration : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPDiscoveryConfiguration")]
 	[DisableDefaultCtor]
 	interface DiscoveryConfiguration
 	{
@@ -476,7 +476,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPPaymentIntent : NSObject <SCPJSONDecodable, NSCopying>
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPPaymentIntent")]
 	[DisableDefaultCtor]
 	interface PaymentIntent : JSONDecodable, INSCopying
 	{
@@ -510,7 +510,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPRefundParameters : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPRefundParameters")]
 	[DisableDefaultCtor]
 	interface RefundParameters
 	{
@@ -544,7 +544,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPSimulatedCard : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPSimulatedCard")]
 	[DisableDefaultCtor]
 	interface SimulatedCard
 	{
@@ -566,7 +566,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPSimulatorConfiguration : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPSimulatorConfiguration")]
 	[DisableDefaultCtor]
 	interface SimulatorConfiguration
 	{
@@ -581,7 +581,7 @@ namespace StripeTerminal
 
 	// @interface SCPTerminal : NSObject
 	[iOS(10, 0)]
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPTerminal")]
 	[DisableDefaultCtor]
 	interface Terminal
 	{
@@ -789,7 +789,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPInternetConnectionConfiguration : SCPConnectionConfiguration
-	[BaseType(typeof(ConnectionConfiguration))]
+	[BaseType(typeof(ConnectionConfiguration), Name = "SCPInternetConnectionConfiguration")]
 	interface InternetConnectionConfiguration
 	{
 		// @property (readonly, nonatomic) BOOL failIfInUse;
@@ -814,7 +814,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPListLocationsParameters : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPListLocationsParameters")]
 	interface ListLocationsParameters
 	{
 		// @property (readwrite, nonatomic) NSNumber * _Nullable limit;
@@ -835,7 +835,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPLocation : NSObject <SCPJSONDecodable>
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPLocation")]
 	[DisableDefaultCtor]
 	interface Location : JSONDecodable
 	{
@@ -861,7 +861,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPPaymentIntentParameters : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPPaymentIntentParameters")]
 	[DisableDefaultCtor]
 	interface PaymentIntentParameters
 	{
@@ -931,7 +931,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPPaymentMethod : NSObject <SCPJSONDecodable>
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPPaymentMethod")]
 	[DisableDefaultCtor]
 	interface PaymentMethod : JSONDecodable
 	{
@@ -961,7 +961,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPPaymentMethodDetails : NSObject <SCPJSONDecodable>
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPPaymentMethodDetails")]
 	[DisableDefaultCtor]
 	interface PaymentMethodDetails : JSONDecodable
 	{
@@ -979,7 +979,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPProcessPaymentError : NSError
-	[BaseType(typeof(NSError))]
+	[BaseType(typeof(NSError), Name = "SCPProcessPaymentError")]
 	[DisableDefaultCtor]
 	interface ProcessPaymentError
 	{
@@ -997,7 +997,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPProcessRefundError : NSError
-	[BaseType(typeof(NSError))]
+	[BaseType(typeof(NSError), Name = "SCPProcessRefundError")]
 	interface ProcessRefundError
 	{
 		// @property (readonly, nonatomic) SCPRefund * _Nullable refund;
@@ -1010,7 +1010,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPReadReusableCardParameters : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPReadReusableCardParameters")]
 	interface ReadReusableCardParameters
 	{
 		// @property (readwrite, copy, nonatomic) NSString * _Nullable customer;
@@ -1023,7 +1023,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPReader : NSObject <SCPJSONDecodable>
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPReader")]
 	[DisableDefaultCtor]
 	interface Reader : JSONDecodable
 	{
@@ -1089,7 +1089,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPReaderSoftwareUpdate : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPReaderSoftwareUpdate")]
 	[DisableDefaultCtor]
 	interface ReaderSoftwareUpdate
 	{
@@ -1116,7 +1116,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPReceiptDetails : NSObject <SCPJSONDecodable>
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPReceiptDetails")]
 	[DisableDefaultCtor]
 	interface ReceiptDetails : JSONDecodable
 	{
@@ -1150,7 +1150,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPRefund : NSObject <SCPJSONDecodable>
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPRefund")]
 	[DisableDefaultCtor]
 	interface Refund : JSONDecodable
 	{
@@ -1196,7 +1196,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPSetupAttempt : NSObject <SCPJSONDecodable>
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPSetupAttempt")]
 	interface SetupAttempt : JSONDecodable
 	{
 		// @property (readonly, nonatomic) NSString * _Nullable application;
@@ -1237,7 +1237,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPSetupAttemptCardPresentDetails : NSObject <SCPJSONDecodable>
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPSetupAttemptCardPresentDetails")]
 	[DisableDefaultCtor]
 	interface SetupAttemptCardPresentDetails : JSONDecodable
 	{
@@ -1251,7 +1251,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPSetupAttemptPaymentMethodDetails : NSObject <SCPJSONDecodable>
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPSetupAttemptPaymentMethodDetails")]
 	[DisableDefaultCtor]
 	interface SetupAttemptPaymentMethodDetails : JSONDecodable
 	{
@@ -1269,7 +1269,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPSetupIntent : NSObject <SCPJSONDecodable, NSCopying>
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPSetupIntent"))]
 	[DisableDefaultCtor]
 	interface SetupIntent : JSONDecodable, INSCopying
 	{
@@ -1303,7 +1303,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPSetupIntentParameters : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPSetupIntentParameters")]
 	[DisableDefaultCtor]
 	interface SetupIntentParameters
 	{
