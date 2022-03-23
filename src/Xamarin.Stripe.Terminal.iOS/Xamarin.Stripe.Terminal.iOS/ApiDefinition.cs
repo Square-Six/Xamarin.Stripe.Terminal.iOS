@@ -22,7 +22,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPAddress : NSObject <SCPJSONDecodable>
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPAddress")]
 	[DisableDefaultCtor]
 	interface Address : JSONDecodable
 	{
@@ -88,15 +88,15 @@ namespace StripeTerminal
 	delegate void SCPReaderCompletionBlock([NullAllowed] Reader arg0, [NullAllowed] NSError arg1);
 
 	// @interface SCPConnectionConfiguration : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPConnectionConfiguration")]
 	[DisableDefaultCtor]
 	interface ConnectionConfiguration
 	{
 	}
 
 	// @interface SCPBluetoothConnectionConfiguration : SCPConnectionConfiguration
-	[BaseType(typeof(ConnectionConfiguration))]
-	interface SCPBluetoothConnectionConfiguration
+	[BaseType(typeof(ConnectionConfiguration), Name = "SCPBluetoothConnectionConfiguration")]
+	interface BluetoothConnectionConfiguration
 	{
 		// @property (readonly, nonatomic) NSString * _Nonnull locationId;
 		[Export("locationId")]
@@ -159,7 +159,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPCancelable : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPCancelable")]
 	interface Cancelable
 	{
 		// @property (readonly, nonatomic) BOOL completed;
@@ -172,7 +172,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPCardDetails : NSObject <SCPJSONDecodable>
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPCardDetails")]
 	[DisableDefaultCtor]
 	interface CardDetails : JSONDecodable
 	{
@@ -206,7 +206,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPCardPresentDetails : NSObject <SCPJSONDecodable>
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPCardPresentDetails")]
 	[DisableDefaultCtor]
 	interface CardPresentDetails : JSONDecodable
 	{
@@ -260,7 +260,7 @@ namespace StripeTerminal
 	}
 
 	// @interface SCPCartLineItem : NSObject
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(NSObject), Name = "SCPCartLineItem")]
 	interface CartLineItem : INativeObject
 	{
 		// @property (assign, readwrite, nonatomic) NSInteger quantity;
@@ -644,7 +644,7 @@ namespace StripeTerminal
 
 		// -(void)connectBluetoothReader:(SCPReader * _Nonnull)reader delegate:(id<SCPBluetoothReaderDelegate> _Nonnull)delegate connectionConfig:(SCPBluetoothConnectionConfiguration * _Nonnull)connectionConfig completion:(SCPReaderCompletionBlock _Nonnull)completion __attribute__((swift_name("connectBluetoothReader(_:delegate:connectionConfig:completion:)")));
 		[Export("connectBluetoothReader:delegate:connectionConfig:completion:")]
-		void ConnectBluetoothReader(Reader reader, [Bind("IBluetoothReaderDelegate")] BluetoothReaderDelegate @delegate, SCPBluetoothConnectionConfiguration connectionConfig, SCPReaderCompletionBlock completion);
+		void ConnectBluetoothReader(Reader reader, [Bind("IBluetoothReaderDelegate")] BluetoothReaderDelegate @delegate, BluetoothConnectionConfiguration connectionConfig, SCPReaderCompletionBlock completion);
 
 		// -(void)connectInternetReader:(SCPReader * _Nonnull)reader connectionConfig:(SCPInternetConnectionConfiguration * _Nullable)connectionConfig completion:(SCPReaderCompletionBlock _Nonnull)completion __attribute__((swift_name("connectInternetReader(_:connectionConfig:completion:)")));
 		[Export("connectInternetReader:connectionConfig:completion:")]
