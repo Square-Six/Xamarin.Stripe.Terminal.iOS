@@ -16,6 +16,11 @@ using StripeTerminal;
  * 
  * This wraps the native method and produces a better result
  * 
+ * 
+ * Reference: https://docs.microsoft.com/en-us/xamarin/cross-platform/macios/binding/binding-types-reference
+ * 
+ * [BindAs (Type.GetType("IBluetoothReaderDelegate"))]
+ * 
  */
 
 namespace StripeTerminal
