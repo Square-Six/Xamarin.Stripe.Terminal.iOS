@@ -659,11 +659,11 @@ namespace StripeTerminal
 		// -(SCPCancelable * _Nullable)discoverReaders:(SCPDiscoveryConfiguration * _Nonnull)configuration delegate:(id<SCPDiscoveryDelegate> _Nonnull)delegate completion:(SCPErrorCompletionBlock _Nonnull)completion __attribute__((swift_name("discoverReaders(_:delegate:completion:)")));
 		[Export("discoverReaders:delegate:completion:")]
 		[return: NullAllowed]
-		Cancelable DiscoverReaders(DiscoveryConfiguration configuration, DiscoveryDelegate @delegate, SCPErrorCompletionBlock completion);
+		Cancelable DiscoverReaders(DiscoveryConfiguration configuration, [BindAs(Type.GetType("IDiscoveryDelegate"))] DiscoveryDelegate @delegate, SCPErrorCompletionBlock completion);
 
 		// -(void)connectBluetoothReader:(SCPReader * _Nonnull)reader delegate:(id<SCPBluetoothReaderDelegate> _Nonnull)delegate connectionConfig:(SCPBluetoothConnectionConfiguration * _Nonnull)connectionConfig completion:(SCPReaderCompletionBlock _Nonnull)completion __attribute__((swift_name("connectBluetoothReader(_:delegate:connectionConfig:completion:)")));
 		[Export("connectBluetoothReader:delegate:connectionConfig:completion:")]
-		void ConnectBluetoothReader(Reader reader, [Bind("IBluetoothReaderDelegate")] BluetoothReaderDelegate @delegate, BluetoothConnectionConfiguration connectionConfig, SCPReaderCompletionBlock completion);
+		void ConnectBluetoothReader(Reader reader, [BindAs(Type.GetType("IBluetoothReaderDelegate"))] BluetoothReaderDelegate @delegate, BluetoothConnectionConfiguration connectionConfig, SCPReaderCompletionBlock completion);
 
 		// -(void)connectInternetReader:(SCPReader * _Nonnull)reader connectionConfig:(SCPInternetConnectionConfiguration * _Nullable)connectionConfig completion:(SCPReaderCompletionBlock _Nonnull)completion __attribute__((swift_name("connectInternetReader(_:connectionConfig:completion:)")));
 		[Export("connectInternetReader:connectionConfig:completion:")]
