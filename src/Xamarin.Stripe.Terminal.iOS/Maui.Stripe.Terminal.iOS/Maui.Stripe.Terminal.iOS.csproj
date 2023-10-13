@@ -1,23 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net7.0-ios10.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>true</ImplicitUsings>
-    <IsBindingProject>true</IsBindingProject>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0-ios10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>true</ImplicitUsings>
+        <IsBindingProject>true</IsBindingProject>
+    </PropertyGroup>
 
     <ItemGroup>
-        <NativeReference Include="StripeTerminal.framework">
-            <Kind>Static</Kind>
-            <ForceLoad>True</ForceLoad>
+        <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+        <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <NativeReference Include="..\Xamarin.Stripe.Terminal.iOS\StripeTerminal.framework">
+            <Kind>Framework</Kind>
+            <SmartLink>False</SmartLink>
         </NativeReference>
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Properties\" />
-    </ItemGroup>
 </Project>
